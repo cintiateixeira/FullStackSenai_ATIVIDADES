@@ -1,10 +1,2016 @@
-<HTML>
-<HEAD><TITLE>ATIVIDADE DE VERSIONAMENTO</TITLE></HEAD>
-<BODY>
-<<<<<<< HEAD
-    <H1> VERSIONAMENTO </H1>
-=======
-   <H1> GIT </H1>
->>>>>>> feature1
-</BODY>
-</HTML>
+Microsoft Windows [versão 10.0.22621.2428]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Users\55899>mongoimport
+2023-11-09T08:36:14.751-0300    no collection specified
+2023-11-09T08:36:14.800-0300    using filename '' as collection
+2023-11-09T08:36:14.800-0300    error validating settings: invalid collection name: collection name cannot be an empty string
+
+C:\Users\55899>mongosh
+Current Mongosh Log ID: 654cc43a56776fc338ca2504
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.2
+Using MongoDB:          7.0.2
+Using Mongosh:          2.0.2
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-11-08T12:00:42.868-03:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use dadosDeCarros
+switched to db dadosDeCarros
+dadosDeCarros> db.carros.insertMany(
+ modelo: "mobi",
+...     [
+...         {
+...             _id: "c01",
+...             marca: "ferrari",
+...             modelo: "f40",
+...             anoFabricacao: 2012,
+...             km: 4000
+...         },
+...         {
+...             _id: "c02",
+...             marca: "fiat",
+...                        anoFabricacao: 2018,
+...             km: 26470
+...         },
+...         {
+...             _id: "c03",
+...             marca: "vw",
+...             modelo: "polo",
+...             anoFabricacao: 2023,
+...             km: 4450
+...         },
+...         {
+...             _id: "c04",
+...             marca: "gm",
+...             modelo: "onix",
+...             anoFabricacao: 2020,
+...             km: 45500
+...         },
+...         {
+...             _id: "c05",
+...             marca: "fiat",
+...             modelo: "uno",
+...             anoFabricacao: 2018,
+...             km: 65920
+...         },
+...         {
+...             _id: "c06",
+...             marca: "vw",
+...             modelo: "gol",
+...             anoFabricacao: 2015,
+...             km: 250480
+...         },
+...         {
+...             _id: "c07",
+...             marca: "fiat",
+...             modelo: "mobi",
+...             anoFabricacao: 2020,
+...             km: 25840
+...         },
+...         {
+...             _id: "c08",
+...             marca: "gm",
+...             modelo: "onix",
+...             anoFabricacao: 2022,
+...             km: 4850
+...         },
+...         {
+...             _id: "c09",
+...             marca: "gm",
+...             modelo: "astra",
+...             anoFabricacao: 2012,
+...             km: 85490
+...         }
+...
+...     ]
+... )
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 'c01',
+    '1': 'c02',
+    '2': 'c03',
+    '3': 'c04',
+    '4': 'c05',
+    '5': 'c06',
+    '6': 'c07',
+    '7': 'c08',
+    '8': 'c09'
+  }
+}
+dadosDeCarros> db.carros.find({marca:"fiat"})
+
+
+dadosDeCarros>
+
+dadosDeCarros> db.carros.find({marca:"fiat"})
+[
+  { _id: 'c02', marca: 'fiat', anoFabricacao: 2018, km: 26470 },  {
+    _id: 'c05',
+    marca: 'fiat',
+    modelo: 'uno',
+    anoFabricacao: 2018,
+    km: 65920
+  },
+  {
+    _id: 'c07',
+    marca: 'fiat',
+    modelo: 'mobi',
+    anoFabricacao: 2020,
+    km: 25840
+  }
+]
+dadosDeCarros> db.carros.find({modelo:"onix"})
+[
+  {
+    _id: 'c04',
+    marca: 'gm',
+    modelo: 'onix',
+    anoFabricacao: 2020,
+    km: 45500
+  },
+  {
+    _id: 'c08',
+    marca: 'gm',
+    modelo: 'onix',
+    anoFabricacao: 2022,
+    km: 4850
+  }
+]
+dadosDeCarros> db.carros.find({anoFabricacao: > 2018})
+Uncaught:
+SyntaxError: Unexpected token (1:31)
+
+> 1 | db.carros.find({anoFabricacao: > 2018})
+    |                                ^
+  2 |
+
+dadosDeCarros> db.carros.find({anoFabricacao > 2018})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:30)
+
+> 1 | db.carros.find({anoFabricacao > 2018})
+    |                               ^
+  2 |
+
+dadosDeCarros> use colecaoLivros
+switched to db colecaoLivros
+colecaoLivros> db.livros.find({categories: {$in: ["PHP", "Internet"]}, pageCount:400})
+
+colecaoLivros> db.livros.find({categories: {$in: ["PHP", "Internet"]}})
+
+colecaoLivros> use livrosColecao
+switched to db livrosColecao
+livrosColecao> db.livros.find({categories: {$in: ["PHP", "Internet"]}})
+[
+  {
+    _id: 4,
+    title: 'Flex 3 in Action',
+    isbn: '1933988746',
+    pageCount: 576,
+    publishedDate: ISODate("2009-02-02T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg',
+    longDescription: "New web applications require engaging user-friendly interfaces   and the cooler, the better. With Flex 3, web developers at any skill level can create high-quality, effective, and interactive Rich Internet Applications (RIAs) quickly and easily. Flex removes the complexity barrier from RIA development by offering sophisticated tools and a straightforward programming language so you can focus on what you want to do instead of how to do it. And now that the major components of Flex are free and open-source, the cost barrier is gone, as well!    Flex 3 in Action is an easy-to-follow, hands-on Flex tutorial. Chock-full of examples, this book goes beyond feature coverage and helps you put Flex to work in real day-to-day tasks. You'll quickly master the Flex API and learn to apply the techniques that make your Flex applications stand out from the crowd.    Interesting themes, styles, and skins  It's in there.  Working with databases  You got it.  Interactive forms and validation  You bet.  Charting techniques to help you visualize data  Bam!  The expert authors of Flex 3 in Action have one goal   to help you get down to business with Flex 3. Fast.    Many Flex books are overwhelming to new users   focusing on the complexities of the language and the super-specialized subjects in the Flex eco-system; Flex 3 in Action filters out the noise and dives into the core topics you need every day. Using numerous easy-to-understand examples, Flex 3 in Action gives you a strong foundation that you can build on as the complexity of your projects increases.",
+    status: 'PUBLISH',
+    authors: [ 'Tariq Ahmed with Jon Hirschi', 'Faisal Abid' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 5,
+    title: 'Flex 4 in Action',
+    isbn: '1935182420',
+    pageCount: 600,
+    publishedDate: ISODate("2010-11-15T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed2.jpg',
+    longDescription: `Using Flex, you can create high-quality, effective, and interactive Rich Internet Applications (RIAs) quickly and easily. Flex removes the complexity barrier from RIA development by offering sophisticated tools and a straightforward programming language so you can focus on what you want to do instead of how to do it. And the new features added in Flex 4 give you an even wider range of options!    Flex 4 in Action is an easy-to-follow, hands-on Flex tutorial that goes beyond feature coverage and helps you put Flex to work in real day-to-day tasks. You'll quickly master the Flex API and learn to apply the techniques that make your Flex applications stand out from the crowd.    The expert authors of Flex 4 in Action have one goal-to help you get down to business with Flex. Fast. Flex 4 in Action filters out the noise and dives into the core topics you need every day. Using numerous easy-to-understand examples, Flex 4 in Action gives you a strong foundation that you can build on as the complexity of your projects increases.    Interesting themes, styles, and skins  It's in there.  Working with databases  You got it.  Interactive forms and validation  You bet.  Charting techniques to help you visualize data  Bam!  And you'll get full coverage of these great Flex 4 upgrades:  Next generation Spark components-New buttons, form inputs, navigation controls and other visual components replace the Flex 3 "Halo" versions. Spark components are easier to customize, which makes skinning and theme design much faster  A new "network monitor" allows you to see the data communications between a Flex application and a backend server, which helps when trying to debug applications that are communicating to another system/service  Numerous productivity boosting features that speed up the process of creating applications  A faster compiler to take your human-written source code and convert it into a machine-readable format  Built-in support for unit testing allows you to improve the quality of your software, and reduce the time spent in testing`,
+    status: 'PUBLISH',
+    authors: [ 'Tariq Ahmed', 'Dan Orlando', 'John C. Bland II', 'Joel Hooks' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 6,
+    title: 'Collective Intelligence in Action',
+    isbn: '1933988312',
+    pageCount: 425,
+    publishedDate: ISODate("2008-10-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/alag.jpg',
+    longDescription: "There's a great deal of wisdom in a crowd, but how do you listen to a thousand people talking at once  Identifying the wants, needs, and knowledge of internet users can be like listening to a mob.    In the Web 2.0 era, leveraging the collective power of user contributions, interactions, and feedback is the key to market dominance. A new category of powerful programming techniques lets you discover the patterns, inter-relationships, and individual profiles   the collective intelligence   locked in the data people leave behind as they surf websites, post blogs, and interact with other users.    Collective Intelligence in Action is a hands-on guidebook for implementing collective-intelligence concepts using Java. It is the first Java-based book to emphasize the underlying algorithms and technical implementation of vital data gathering and mining techniques like analyzing trends, discovering relationships, and making predictions. It provides a pragmatic approach to personalization by combining content-based analysis with collaborative approaches.    This book is for Java developers implementing collective intelligence in real, high-use applications. Following a running example in which you harvest and use information from blogs, you learn to develop software that you can embed in your own applications. The code examples are immediately reusable and give the Java developer a working collective intelligence toolkit.    Along the way, you work with, a number of APIs and open-source toolkits including text analysis and search using Lucene, web-crawling using Nutch, and applying machine learning algorithms using WEKA and the Java Data Mining (JDM) standard.",
+    status: 'PUBLISH',
+    authors: [ 'Satnam Alag' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 8,
+    title: 'Flex on Java',
+    isbn: '1933988797',
+    pageCount: 265,
+    publishedDate: ISODate("2010-10-15T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/allmon.jpg',
+    shortDescription: '   A beautifully written book that is a must have for every Java Developer.       Ashish Kulkarni, Technical Director, E-Business Software Solutions Ltd.',
+    longDescription: `In the demo, a hip designer, a sharply-dressed marketer, and a smiling, relaxed developer sip lattes and calmly discuss how Flex is going to make customers happy and shorten the workday   all while boosting the bottom line. The software systems they're using have been carefully selected and built from the ground up to work together seamlessly. There are no legacy systems, data, or competing business concerns to manage.    Cut to reality.    You're a Java developer. The marketing guy tells you that "corporate" wants a Flex-based site and you have to deliver it on top of what you already have. Your budget  Don't even ask. "Make it look like the Discovery channel or something."    Flex on Java assumes you live in the real world   not the demo. This unique book shows you how to refactor an existing web application using the server-side you already know. You'll learn to use Flex 3 in concert with Spring, EJB 3, POJOs, JMS, and other standard technologies. Wherever possible, the examples use free or open source software.    The authors start with a typical Java web app and show you how to add a rich Flex interface. You also learn how to integrate Flex into your server-side Java via the BlazeDS framework, Adobe's open-source remoting and web messaging technology for Flex.    The book shows you how to deploy to not only the web but also to the desktop using the Adobe Integrated Runtime (AIR). You will learn how to integrate Flex into your existing applications in order to build a next generation application that will delight users.    Flex on Java is approachable for anyone beginning Java and Flex development.    `,
+    status: 'PUBLISH',
+    authors: [ 'Bernerd Allmon', 'Jeremy Anderson' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 13,
+    title: 'Hello! Flex 4',
+    isbn: '1933988762',
+    pageCount: 258,
+    publishedDate: ISODate("2009-11-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/armstrong3.jpg',
+    shortDescription: "Hello! Flex 4 progresses through 26 self-contained examples selected so you can progressively master Flex. They vary from small one-page apps, to a 3D rotating haiku, to a Connect Four-like game. And in the last chapter you'll learn to build a full Flex application called SocialStalkr   a mashup that lets you follow your friends by showing their tweets on a Yahoo map.",
+    longDescription: "With Flex 4 you can easily add color and life to your web applications by introducing dynamic user features, slick transitions, and eye-catching animations. Flex also provides powerful data handling capabilities so you can build industrial-strength applications. And it's open source, so you can get started without forking over a lot of your hard-earned cash.    We think it should be just as much fun to learn Flex as it is to use Flex. Hello! Flex 4 shows you everything you need to know to get started with Flex 4 without bogging you down in obscure detail or academic edge cases. In this entertaining, hands-on book, you'll quickly move from Hello World into the techniques you'll need to use Flex effectively.    You'll start by progressing through 26 self-contained workshop items, which include everything from small one-page examples, to a 3D rotating haiku, to building a Connect Four game. Finally, in the last chapter you'll build a full Flex application called 'SocialStalkr': an interesting mashup of Twitter and Yahoo Maps that lets you 'stalk' your friends by showing specially formatted Twitter tweets on a Yahoo map.",
+    status: 'PUBLISH',
+    authors: [ 'Peter Armstrong' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 25,
+    title: 'JSTL in Action',
+    isbn: '1930110529',
+    pageCount: 480,
+    publishedDate: ISODate("2002-07-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/bayern.jpg',
+    longDescription: "JSTL is an important simplification of the Java web platform. With JSTL, page authors can now write dynamic pages using standard HTML-like tags and an easy-to-learn expression language. JSTL is a standard from the Java Community Process, and its expression language will become part of JSP 2.0.    JSTL in Action shows you how to write rich, dynamic web pages without programming. From simple loops to tricky XML processing, every feature of JSTL is covered and exercised in numerous useful examples. Whether you are a novice page author or an experienced Java programmer, this book shows you easy ways to create powerful web sites.    To help readers who don't already have a JSP container run the examples in the book, there's a free companion download here. This bundle contains a ready-to-run JSP container, a JSTL implementation, and all the book's examples.",
+    status: 'PUBLISH',
+    authors: [ 'Shawn Bayern' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 35,
+    title: "Website Owner's Manual",
+    isbn: '1933988452',
+    pageCount: 296,
+    publishedDate: ISODate("2009-10-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/boag.jpg',
+    shortDescription: "Website Owner's Manual helps you form a vision for your site, guides you through the process of selecting a web design agency, and gives you enough background information to make intelligent decisions throughout the development process. This book provides a jargon-free overview of web design, including accessibility, usability, online marketing, and web development techniques. You'll gain a practical understanding of the technologies, processes, and ideas that drive a successful website.",
+    longDescription: "Just because you're responsible for your organization's web presence doesn't mean you know how to build a website. The job of planning, launching, and managing a site often falls to people who have little or no experience in web design or development. Website Owner's Manual is a book for the thousands of marketers, IT managers, project leaders, and business owners who need to put a website in place and keep it running with a minimum of trouble.    Website Owner's Manual helps you form a vision for your site, guides you through the process of selecting a web design agency, and gives you enough background information to make intelligent decisions throughout the development process. This book provides a jargon-free overview of web design, including accessibility, usability, online marketing, and web development techniques. You'll gain a practical understanding of the technologies, processes, and ideas that drive a successful website.",
+    status: 'PUBLISH',
+    authors: [ 'Paul A. Boag' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 51,
+    title: 'Mobile Agents',
+    isbn: '1884777368',
+    pageCount: 320,
+    publishedDate: ISODate("1997-03-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/cockayne.jpg',
+    shortDescription: 'Mobile Agents is the first book to give the reader the ability to create and use powerful mobile agents on the Internet.',
+    longDescription: "Mobile Agents is the first book to give the reader the ability to create and use powerful mobile agents on the Internet. The book presents the reality of today's agent technologies and the future that this technology promises. It teaches how to create and deploy the major mobile agent systems (Telescript, Agent Tcl, Ara, Aglets Workbench) and how to solve a variety of problems on the Internet. Each of the chapters was written in collaboration with the original developers of the agent systems.",
+    status: 'PUBLISH',
+    authors: [ 'William R. Cockayne and Michael Zyda', 'editors' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 59,
+    title: 'Ajax in Action',
+    isbn: '1932394613',
+    pageCount: 680,
+    publishedDate: ISODate("2005-10-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/crane.jpg',
+    longDescription: 'Web users are getting tired of the traditional web experience. They get frustrated losing their scroll position; they get annoyed waiting for refresh; they struggle to reorient themselves on every new page. And the list goes on. With asynchronous JavaScript and XML, known as "Ajax," you can give them a better experience. Once users have experienced an Ajax interface, they hate to go back. Ajax is new way of thinking that can result in a flowing and intuitive interaction with the user.\n' +
+      '<br>\n' +
+      '<i>Ajax in Action</i> helps you implement that thinking--it explains how to distribute the application between the client and the server (hint: use a "nested MVC" design) while retaining the integrity of the system. You will learn how to ensure your app is flexible and maintainable, and how good, structured design can help avoid problems like browser incompatibilities. Along the way it helps you unlearn many old coding habits. Above all, it opens your mind to the many advantages gained by placing much of the processing in the browser. If you are a web developer who has prior experience with web technologies, this book is for you.',
+    status: 'PUBLISH',
+    authors: [ 'Dave Crane', 'Eric Pascarello with Darren James' ],
+    categories: [ 'XML', 'Internet' ]
+  },
+  {
+    _id: 65,
+    title: 'Hello! HTML5 & CSS3',
+    isbn: '1935182897',
+    pageCount: 325,
+    publishedDate: ISODate("2012-10-17T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/crowther.jpg',
+    shortDescription: "Quick and Easy HTML5 and CSS3 is written for the web designer or developer who wants a fast, example-oriented introduction to the new HTML and CSS features. After a quick review of the basics, you'll turn to what's new. Start by learning to apply important new elements and attributes by building your first real HTML5 pages. You'll then take a quick tour through the new APIs: Form Validation, Canvas, Drag & Drop, Geolocation and Offline Applications. You'll also discover how to include video and audio on your pages without plug-ins, and how to draw interactive vector graphics with SVG.",
+    longDescription: "HTML and CSS are the foundation of the web, and HTML5 and CSS3 are the latest standards. If you build web pages, mobile apps, or do any type of development at all, you'll have to learn HTML5 and CSS3, so why not start now  Quick and Easy HTML5 and CSS3 will give you a smart, snappy, and fun introduction to building web sites with these really cool new tools.    Quick and Easy HTML5 and CSS3 is written for the web designer or developer who wants a fast, example-oriented introduction to the new HTML and CSS features. After a quick review of the basics, you'll turn to what's new. Start by learning to apply important new elements and attributes by building your first real HTML5 pages. You'll then take a quick tour through the new APIs: Form Validation, Canvas, Drag & Drop, Geolocation and Offline Applications. You'll also discover how to include video and audio on your pages without plug-ins, and how to draw interactive vector graphics with SVG.    Once you've explored the fundamentals of HTML5, it's time to add some style to your pages with CSS3. New CSS features include drop shadows, borders, colors, gradients and backgrounds. In addition, you'll learn to layout your pages with the new flexible box and layout modules, and add the finishing touches with custom fonts. You'll also see how to target specific devices with media queries, and do all of it with less code thanks to the new selectors and pseudo classes.    Finally you will walk through several large examples where you see all the features of HTML5 and CSS3 working together to produce responsive and lightweight applications which you can interact with just like native desktop apps.",
+    status: 'PUBLISH',
+    authors: [ 'Rob Crowther' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 71,
+    title: '.NET Multithreading',
+    isbn: '1930110545',
+    pageCount: 360,
+    publishedDate: ISODate("2002-11-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/dennis.jpg',
+    longDescription: "If you need high performance, or a rich user experience, you should consider multithreading. With .NET you can develop stable and robust multithreaded applications with minimal effort. .NET Multithreading teaches the basics in an understandable and practical way. It then focuses on .NET's mechanisms for multithreading and shows how easy it can be to develop applications with them. The book covers several design approaches such as one-thread-one-class, the asynchronous design pattern, and using queues as buffers between threads. It explains best practices and how to avoid common multithreading pitfalls such as deadlock and race conditions.    This book is written for intermediate .NET developers who know C# or VB .NET, but are not assumed to have a background in multithreading. It is rich in examples that will help you understand the subject and produce multithreaded applications that have the power of C++ while keeping the ease and reliability of .NET.",
+    status: 'PUBLISH',
+    authors: [ 'Alan Dennis' ],
+    categories: [ 'Microsoft .NET', 'Internet' ]
+  },
+  {
+    _id: 72,
+    title: 'SCWCD Exam Study Kit Second Edition',
+    isbn: '1932394389',
+    pageCount: 560,
+    publishedDate: ISODate("2005-05-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/deshmukh2.jpg',
+    longDescription: 'With the tremendous penetration of J2EE in the enterprise, passing the Sun Certified Web Component Developer exam has become an important qualification for Java and J2EE developers. To pass the SCWCD exam (Number: 310-081) you need to answer 69 questions in 135 minutes and get 62% of them right. You also need  150 and this (completely updated and newly revised) book.    In its first edition, the SCWCD Exam Study Kit was the most popular book used to pass this most desirable web development certification exam. The new edition will help you learn the concepts    large and small    that you need to know. It covers the newest version of the exam and not a single topic is missed.    The SCWCD exam is for Sun Certified Java Programmers who have a certain amount of experience with Servlets and JSPs, but for those who do not, the book starts with three introductory chapters on these topics. Although the SCWCD Exam Study Kit has one purpose, to help you get certified, you will find yourself returning to it as a reference after passing the exam.',
+    status: 'PUBLISH',
+    authors: [ 'Hanumant Deshmukh', 'Jignesh Malavia', '', 'Matthew Scarpino' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 75,
+    title: 'RSS and Atom in Action',
+    isbn: '1932394494',
+    pageCount: 400,
+    publishedDate: ISODate("2006-03-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/dmjohnson.jpg',
+    longDescription: 'RSS and Atom in Action is organized into two parts. The first part introduces the blog technologies of newsfeed formats and publishing protocols   the building blocks. The second part shows how to put to those blocks together to assemble interesting and useful blog applications.    In keeping with the principle behind Manning   s    In Action    series, this book shows the reader, through numerous examples in Java and C#, how to parse Atom and RSS format newsfeeds, how to generate valid newsfeeds and serve them efficiently, and howto automate blogging via web services based on the new Atom protocol and the older MetaWeblog API. The book also shows how to develop a complete blog client library that readers can use in their own applications. The second half of the book is devoted to a dozen blog apps   small but immediately useful example applications such as a community aggregator, a file distribution newsfeed, a blog cross-poster, an email-to-blog gateway, Ant tasks for blogging software builds, and more.',
+    status: 'PUBLISH',
+    authors: [ 'Dave Johnson' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 76,
+    title: 'LDAP Programming, Management and Integration',
+    isbn: '1930110405',
+    pageCount: 352,
+    publishedDate: ISODate("2002-11-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/donley.jpg',
+    longDescription: "LDAP is the leading Internet protocol for directory-like information: user identities, preferences, security privileges. etc. Because it is popular, most programming languages have handy extensions for searching and updating LDAP directories. But most information today is still locked away in application-specific repositories that lack LDAP access.    LDAP Programming, Management and Integration explains how to link non-LDAP data with LDAP directories. It starts with a concise introduction to the LDAP standard and discusses how to work with it in Java and Perl. It gives you practical code and advice for migrating and integrating data into an LDAP environment. And it explains how to increase your application's security using identity and profile information from LDAP repositories.    Written for programmers and system administrators, this book teaches clearly and honestly the LDAP practiced  in the trenches.  It is concise yet rich in practical examples that make a sometimes complex subject easy to understand.",
+    status: 'PUBLISH',
+    authors: [ 'Clayton Donley' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 133,
+    title: 'OSGi in Action',
+    isbn: '1933988916',
+    pageCount: 576,
+    publishedDate: ISODate("2011-04-06T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/hall.jpg',
+    shortDescription: "OSGi in Action is a comprehensive guide to OSGi with two primary goals. First, it provides a clear introduction to OSGi concepts with examples that are relevant both for architects and developers. The central idea of OSGi is modularity, so you start by learning about OSGi bundles. You'll then see how OSGi handles module lifecycles and follow up with how it promotes service-oriented interaction among application components.",
+    longDescription: `If you're a Java developer, you've almost certainly heard of OSGi   and also heard that it's becoming quite a big deal. But you may still be wondering exactly "What is OSGi "    Simply put, OSGi is a technology that allows you to create highly modular Java applications. It introduces a logical and physical module format, called a bundle, for explicitly structuring your application as a set of interconnected modules. OSGi lets you install, start, stop, update, or uninstall modules at execution time without taking down your entire system. In addition, OSGi defines a local service-oriented approach for creating applications out of loosely coupled components.    With the prevalence of modern component and service-based architectures, OSGi is becoming increasingly important. It meshes well with such approaches and greatly simplifies their creation and management. It's the backbone of Eclipse's plugin system as well as many recent JavaEE containers, such as GlassFish v3, WebSphere v6.1, and WebLogic Event Server. Even the SpringSource Application Platform is built on top of it.    OSGi in Action is a comprehensive guide to OSGi with two primary goals.    First, it provides a clear introduction to OSGi concepts with examples that are relevant both for architects and developers. The central idea of OSGi is modularity, so you start by learning about OSGi bundles.    You'll then see how OSGi handles module lifecycles and follow up with how it promotes service-oriented interaction among application components.    With the core concepts well in hand, you'll explore numerous application scenarios and techniques. How much of OSGi do you actually need  How do you embed OSGi inside other containers  What are the best practices for migrating legacy systems to OSGi  How can you embrace and make the most of system dynamism     Expert authors Richard S. Hall, Karl Pauls, and Stuart McCulloch have years of experience both in building OSGi-based systems and in contributing to OSGi implementations such as Apache Felix.`,
+    status: 'PUBLISH',
+    authors: [
+      'Richard S. Hall',
+      'Karl Pauls',
+      'Stuart McCulloch',
+      '',
+      'David Savage'
+    ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 135,
+    title: 'GWT in Action',
+    isbn: '1933988231',
+    pageCount: 632,
+    publishedDate: ISODate("2007-06-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/hanson.jpg',
+    longDescription: 'The Google Web Toolkit (GWT) is a new technology from Google that automatically translates Java into JavaScript, making Ajax applications easier to code and deploy. GWT in Action is a comprehensive tutorial for Java developers interested in building the next generation of rich, web-based applications. This book was written by Robert Hanson, creator of the popular GWT Widget Library, and Adam Tacy, a major contributor to the GWT Widget Library.    The Web is experiencing a new growth with an emphasis on rich, web-based applications. These applications can be difficult to build because they rely on JavaScript, which lacks the sophisticated object-oriented structures and static typing of Java, they are tricky to debug, and they require you to manage numerous browser inconsistencies.    In May of 2006 Google released the Google Web Toolkit. GWT enables developers to create Ajax applications in Java. With GWT, you can build your applications using a real object-oriented language and take advantage of Java tools like Eclipse that are already available. Instead of trying to bring tool support to Ajax, Google brought Ajax to a place where the tools already existed.    GWT in Action shows you how to take advantage of these exciting new tools. This clearly-written book is packed with hands-on GWT examples. You   ll absorb the GWT philosophy as you build your first working GWT application.    The book begins by exploring the main features of GWT, including    Compiling Java to JavaScript, the magic that really defines GWT  Building client-side components  Convenient JUnit integration and testing  Interacting with JavaScript and existing JavaScript libraries  Internationalization  You   ll also see how GWT compares to other toolkits.    GWT in Action shows you how to set up your development environment, use and create widgets, communicate with the server, and much more. Readers will follow an example running throughout the book and quickly master the basics of GWT: widgets, panels, and event handling. The book covers the full development cycle, from setting up your development environment, to building the application, then deploying it to the web server. The entire core GWT library is discussed, with details and examples on how it can be extended.    You   ll cover:    Testing, debugging, and deploying GWT Applications  Communicating with GWT-RPC  Examining client-side RPC architecture  Alternative RPC tools: HTTPRequest, RequestBuilder, and FormPanel  Achieving interoperability in GWT with JavaScript Object Notation (JSON)  Making your GWT application flexible and supportable  GWT helps you make the most of Ajax in your web applications and GWT in Action helps you get more out of GWT.',
+    status: 'PUBLISH',
+    authors: [ 'Robert Hanson', 'Adam Tacy' ],
+    categories: [ 'Internet', 'Java' ]
+  },
+  {
+    _id: 139,
+    title: 'Java Development with Ant',
+    isbn: '1930110588',
+    pageCount: 672,
+    publishedDate: ISODate("2002-08-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/hatcher.jpg',
+    shortDescription: "The most widely used build tool for Java projects, Ant is cross-platform, extensible, simple, and fast. It scales from small personal projects to large, multi-team J2EE projects. And, most important, it's easy to learn.",
+    longDescription: "Java Development with Ant systematically explores what Ant can do, and how to apply it to your project. Whether you are new to Ant, or an experienced user, this book will show you powerful and creative uses for Ant. The book emphasizes basic concepts you need to know to effectively use Ant starting with Ant's XML-driven build process. It leads you step-by-step through everything you need to know to compile, test, package and deploy an application. It then guides you through the maze of more complex situations common in larger projects such as enterprise Java applications and Web Services. With this book you will gain access to a powerful tool to automatically build, test and deploy your Java software, no matter how simple or complex it might be.",
+    status: 'PUBLISH',
+    authors: [ 'Erik Hatcher', 'Steve Loughran' ],
+    categories: [ 'Java', 'Internet' ]
+  },
+  {
+    _id: 150,
+    title: 'Illustrated Guide to HTTP',
+    isbn: '138582262',
+    pageCount: 400,
+    publishedDate: ISODate("1997-03-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/hethmon.jpg',
+    longDescription: "If you're interested in building a web server -- or if you're developing an application that depends or will depend on current HTTP protocols -- Illustrated Guide to HTTP is for you! It covers the latest HTTP/1.1 protocol standard as found in RFC 2068 and RFC 2069. Any programmer, developer or web manager involved in web-related software needs this book to keep up with this dynamic area.",
+    status: 'PUBLISH',
+    authors: [ 'Paul S. Hethmon' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 154,
+    title: 'Struts in Action',
+    isbn: '1932394249',
+    pageCount: 672,
+    publishedDate: ISODate("2002-10-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/husted.jpg',
+    longDescription: "Struts solves the most common problems of web development. By basing your application on the Struts framework, you can reuse proven solutions and focus on what's unique to your own case. Struts is an open-source product distributed by the Apache Software Foundation. Struts in Action is a comprehensive introduction to the Struts framework. It covers initial design, data validation, database access, dynamic page assembly, localization, product configuration, and other important areas. It shows you how to use both JSP tags and Velocity templates. It carefully explains the Struts architecture and control flow, as well as how to extend framework classes.    Differences between Struts 1.1 and Struts 1.0. are pointed out and a case-study illustrates the 1.0 to 1.1 transition. The book shows you dozens of proven design techniques, patterns, and strategies, many of them not found elsewhere.",
+    status: 'PUBLISH',
+    authors: [
+      'Ted N. Husted',
+      'Cedric Dumoulin',
+      'George Franciscus',
+      'David Winterfeldt'
+    ],
+    categories: [ 'Java', 'Internet' ]
+  },
+  {
+    _id: 168,
+    title: 'Rails 3 in Action',
+    isbn: '1935182277',
+    pageCount: 425,
+    publishedDate: ISODate("2011-09-20T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/katz.jpg',
+    shortDescription: 'Rails 3 in Action will provide a thorough introduction to Ruby-based web development using Rails. Like Rails 3 itself, this book combines Merb and Rails in the form of authors Yehuda Katz, Merb Lead Developer.',
+    longDescription: `In December 2008, the Merb team announced that they will be collaborating with the Rails core team on the next versions of Merb and Rails. Rather than maintaining parallel tracks, Merb 2 and Rails 3 will merge, preserving the flexible configuration and advanced features that Merb users love along with the rapid productivity and ease-of-use that makes Rails shine. As Engine Yard developer (and Manning author) Yehuda Katz puts it, "Effectively, Merb 2 is Rails 3."    Rails 3 in Action will provide a thorough introduction to Ruby-based web development using Rails. Like Rails 3 itself, this book combines Merb and Rails in the form of authors Yehuda Katz, Merb Lead Developer.    As a developer, you'll benefit from several big advantages to this change:  Rails becomes more modular, by building on rails core with the ability to opt in or out of specific components and making it possible to replace parts of Rails without disturbing other parts.  Merb performance improvements flow into Rails, including benchmarking applications so developers can see which optimizations have real-world impact.  A defined public API with a test suite, so users and plugin developers have a stable API to build against.  A "core" version of Rails, like Merb's current core generator, that makes it easy to select just the parts that are important for your app.  DataMapper and Sequel support as first-class ORMs, along with ActiveRecord as the default.  Rack support in Rails 3, to improve the state of modular, sharable logic between applications.  The Rails 3 team is moving full steam ahead building the new version. The Merb team will start working on Rails immediately, and also continue to fix bugs and resolve other major issues in the current release of Merb. Interim versions of Merb will help ease the transition to Rails 3. In particular, Merb releases with deprecation notices and other transitional mechanisms will assist developers in tracking down the changes between Merb 1.x and Rails 3.    If you've already learned Merb, Rails 3 in Action will help you parlay that knowledge into the new Rails code base. If you're a long time Rails developer, it will help you get up to speed with all the new Rails 3 features and changes.`,
+    status: 'PUBLISH',
+    authors: [ 'Ryan Bigg', 'Yehuda Katz' ],
+    categories: [ 'Internet' ]
+  }
+]
+Type "it" for more
+livrosColecao> it
+[
+  {
+    _id: 172,
+    title: 'Kermit 95+',
+    isbn: '1930110057',
+    pageCount: 0,
+    publishedDate: ISODate("2003-01-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/kermit.jpg',
+    longDescription: 'Kermit 95+, Version 2.1 is a full-featured, fully native, 32-bit communications software package for Microsoft Windows 95/98/NT/2000/XP and IBM OS/2 3.0 and later from the Kermit Project at Columbia University. It works uniformly over a variety of connection methods. Included in the Kermit 95+, Version 2.1 bundle: Internet and modem communications, 40+ terminal emulations, Telnet, SSH, Kerberos, SSL/TLS, Unicode. Plus FTP, Kermit, and Zmodem file transfer, a built-in cross-platform scripting language to automate any communications or file management task, and companion Kermit software for Unix and VMS.    For those already familiar with the package, Version 2.1 adds in-the-box exportable secure authentication and strong encryption including SSH v1/v2, a secure scriptable FTP client, and runs in a GUI window with regular Windows font and size selections.',
+    status: 'PUBLISH',
+    authors: [ 'Kermit Project at Columbia University' ],
+    categories: [ 'Internet', 'Networking', 'Miscella' ]
+  },
+  {
+    _id: 194,
+    title: 'Tapestry in Action',
+    isbn: '1932394117',
+    pageCount: 580,
+    publishedDate: ISODate("2004-03-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/lewisship.jpg',
+    longDescription: "Many web development frustrations can be traced back to the underlying stateless HTTP protocol. Tapestry represents state and behavior as standard Java objects, methods and properties. That means state management and multithreading are handled by the framework, leaving you with just your application's business logic. Tapestry does more, you do less.    Tapestry in Action is the definitive guide to the Tapestry approach: creating full-featured web apps by connecting framework components to economical amounts of application code. Many simple examples show you how to tackle common tasks such as form validation, application localization, client-side scripting, and synchronization between browser and app server. Later chapters discuss more advanced topics including creation of new components and integration with J2EE.    If you want to create great web applications using Tapestry and know Java (plus plain-vanilla HTML and a little XML), this book is for you.",
+    status: 'PUBLISH',
+    authors: [ 'Howard M. Lewis Ship' ],
+    categories: [ 'Java', 'Internet' ]
+  },
+  {
+    _id: 202,
+    title: 'Restlet in Action',
+    isbn: '193518234X',
+    pageCount: 450,
+    publishedDate: ISODate("2012-09-26T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/louvel.jpg',
+    shortDescription: "Restlet in Action gets you started with the Restlet Framework and the REST architecture style. You'll create and deploy applications in record time while learning to use popular RESTful Web APIs effectively. This book looks at the many faces of web development, including server- and client-side, along with cloud computing, mobile Android devices, and semantic web applications. It offers a particular focus on Google's innovative Google Web Toolkit, Google App Engine, and Android technologies.",
+    longDescription: "REpresentational State Transfer, better known as REST, is the architectural style that governs the web's request-and-response resource model. The open source Restlet Framework provides a simple, powerful Java-based API to implement RESTful web applications that supports and integrates with technologies such as Atom, Jetty, JSON, Spring, GWT, Google App Engine, and Android.    Restlet in Action gets you started with the Restlet Framework and the REST architecture style. You'll create and deploy applications in record time while learning to use popular RESTful Web APIs effectively. This book looks at the many faces of web development, including server- and client-side, along with cloud computing, mobile Android devices, and semantic web applications. It offers a particular focus on Google's innovative Google Web Toolkit, Google App Engine, and Android technologies.    The book takes you though a comprehensive presentation of Restlet's main features, including subjects like security, testing and automatic documentation. You'll learn while following the typical Restlet development process, with consistent illustrations based on a sample RESTful email app.    WHAT'S INSIDE        * Learn REST and Restlet from the ground up      * Deploy locally, to the cloud, or on mobile devices      * Numerous illustrations      * Reusable code samples      * Written by the creators of Restlet!    The book requires a basic knowledge of Java and the web, but no prior exposure to REST or Restlet is needed. You'll quickly get the big picture behind REST, the overall design of Restlet and RESTful web development.",
+    status: 'PUBLISH',
+    authors: [ 'Jerome Louvel', 'Thierry Boileau', '', 'Philippe Mougin' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 211,
+    title: 'Comprehensive Networking Glossary and Acronym Guide',
+    isbn: '013319955X',
+    pageCount: 208,
+    publishedDate: ISODate("1995-01-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/malkin.jpg',
+    shortDescription: 'This glossary offers a complete collection of technical terms and acronyms used in the networking industry.',
+    longDescription: 'This glossary offers a complete collection of technical terms and acronyms used in the networking industry. It covers general networking terminology, the specific terminology used in the Internet, and terms and acronyms specific to AppleTalk, IP, IPX, SNA, and OSI. It also covers national and international networking organizations and several major networks.    Organized in case-insensitive, alphabetic order, entries present well written definitions, understandable to novice readers and useful to experts. The glossary and the glossary entries are:    verified  cross-referenced  comprehensive  concise  understandable  For extra guidance, the book ends with three appendices, each listing the entries in one of three subject areas: networks and organizations, security, and applications and protocols.  The Comprehensive Networking Glossary and Acronym Guide is a valuable, single-source reference for the practical terminology of networking as well as a guide to networks and networking organizations.',
+    status: 'PUBLISH',
+    authors: [ 'Gary Scott Malkin' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 214,
+    title: 'Internet BBSs',
+    isbn: '132869985',
+    pageCount: 400,
+    publishedDate: ISODate("1996-10-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/mark.jpg',
+    shortDescription: 'Internet BBSs: A Guided Tour provides in-depth coverage of the new world of true BBSs now available world-wide. It is a valuable resource for anyone currently using the Internet.',
+    longDescription: "OK, so you use the Internet. You've surfed some Web sites and maybe sent e-mail. But, chances are, you've overlooked the rich and really personal dimension of the Internet represented by the explosive growth of Internet BBSs. That's because up till now BBS publications were limited in scope to the old era of dial-up BBSs.    Until recently the world of BBSs was geographically compartmentalized: in practical terms only the BBSs within a local telphone call were accessible. Now, the Internet has made all Internet BBSs accessible to anyone in the world. Internet BBSs: A Guided Tour provides in-depth coverage of this new world of true BBSs now available world-wide. It is a valuable resource for anyone currently using the Internet. Users of the major on-line service forums and chat groups should also read it to find out how they can access a much richer variety of BBSs at less cost.",
+    status: 'PUBLISH',
+    authors: [ 'Richard Scott Mark' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 229,
+    title: 'Server-Based Java Programming',
+    isbn: '1884777716',
+    pageCount: 592,
+    publishedDate: ISODate("2000-06-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/neward3.jpg',
+    longDescription: `Java on the server is here to stay. Whether you're using J2EE or writing your own, you will need to understand the fundamental concepts of server-based Java. Server-Based Java Programming teaches those concepts of Java that underlie the J2EE APIs and the best ways to use them. An ongoing focus on the full lifecycle, including administration and deployment, makes this book a rare, practical guide. One of its themes is the theoretical "three-zeroes" goal for server development--zero development, zero administration, and zero deployment.    Server-Based Java Programming isn't just about implementation--it's also about architecture, and design. You'll learn how to write the code that sustains a cutting-edge enterprise. You will learn nuts-and-bolts topics like ClassLoaders, threads, CORBA, RMI/IIOP, and JNI, as well as how to make each of these contribute to enterprise-wide goals such as fault-tolerance, easier system administration, five-nine availability, deployment without headaches, and lower development costs.`,
+    status: 'PUBLISH',
+    authors: [ 'Ted Neward' ],
+    categories: [ 'Java', 'Client-Server', 'Internet' ]
+  },
+  {
+    _id: 233,
+    title: 'PostGIS in Action',
+    isbn: '1935182269',
+    pageCount: 325,
+    publishedDate: ISODate("2011-04-11T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/obe.jpg',
+    shortDescription: 'PostGIS in Action is the first book devoted entirely to PostGIS. It will help both new and experienced users write spatial queries to solve real-world problems. For those with experience in more traditional relational databases, this book provides a background in vector-based GIS so you can quickly move to analyzing, viewing, and mapping data.',
+    longDescription: "Whether you're canvassing a congressional district, managing a sales region, mapping city bus schedules, or analyzing local cancer rates, thinking spatially opens up limitless possibilities for database users. PostGIS, a freely available open-source spatial database extender, can help you answer questions that you could not answer using a mere relational database. Its feature set equals or surpasses proprietary alternatives, allowing you to create location-aware queries and features with just a few lines of SQL code.    PostGIS in Action is the first book devoted entirely to PostGIS. It will help both new and experienced users write spatial queries to solve real-world problems. For those with experience in more traditional relational databases, this book provides a background in vector-based GIS so you can quickly move to analyzing, viewing, and mapping data. Advanced users will learn how to optimize queries for maximum speed, simplify geometries for greater efficiency, and create custom functions suited specifically to their applications. It also discusses the new features available in PostgreSQL 8.4 and provides tutorials on using additional open source GIS tools in conjunction with PostGIS.",
+    status: 'PUBLISH',
+    authors: [ 'Regina O. Obe', 'Leo S. Hsu' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 243,
+    title: "Explorer's Guide to the Semantic Web",
+    isbn: '1932394206',
+    pageCount: 304,
+    publishedDate: ISODate("2004-06-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/passin.jpg',
+    shortDescription: `"A thorough look at one vision of the Web's future ...particularly well written...Highly recommended." -- Choice Magazine`,
+    longDescription: `A complex set of extensions to the World Wide Web, the Semantic Web will make data and services more accessible to computers and useful to people. Some of these extensions are being deployed, and many are coming in the next years. This is the only book to explore the territory of the Semantic Web in a broad and conceptual manner.    This Guide acquaints you with the basic ideas and technologies of the Semantic Web, their roles and inter-relationships. The key areas covered include knowledge modeling (RDF, Topic Maps), ontology (OWL), agents (intelligent and otherwise), distributed trust and belief, "semantically-focused" search, and much more.    The book's basic, conceptual approach is accessible to readers with a wide range of backgrounds and interests. Important points are illustrated with diagrams and occasional markup fragments. As it explores the landscape it encounters an ever-surprising variety of novel ideas and unexpected links. The book is easy and fun to read - you may find it hard to put down.    The Semantic Web is coming. This is a guide to the basic concepts and technologies that will come with it.`,
+    status: 'PUBLISH',
+    authors: [ 'Thomas B. Passin' ],
+    categories: [ 'Internet', 'Theory', 'XML' ]
+  },
+  {
+    _id: 267,
+    title: 'PHP in Action',
+    isbn: '1932394753',
+    pageCount: 552,
+    publishedDate: ISODate("2007-07-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/reiersol.jpg',
+    shortDescription: '"If there was ever a textbook for software development in PHP, this would be it."    Cal Evans, Podcast Review, Zend Developer Network',
+    longDescription: 'To keep programming productive and enjoyable, state-of-the-art practices and principles are essential. Object-oriented programming and design help manage complexity by keeping components cleanly separated. Unit testing helps prevent endless, exhausting debugging sessions. Refactoring keeps code supple and readable. PHP offers all this, and more.    PHP in Action shows you how to apply PHP techniques and principles to all the most common challenges of web programming, including:    Web presentation and templates  User interaction including the Model-View-Contoller architecture  Input validation and form handling  Database connection and querying and abstraction  Object persistence  This book takes on the most important challenges of web programming in PHP 5 using state-of-the art programming and software design techniques including unit testing, refactoring and design patterns. It provides the essential skills you need for developing or maintaining complex to moderately complex PHP web applications.',
+    status: 'PUBLISH',
+    authors: [ 'Dagfinn Reiersøl with Marcus Baker', 'Chris Shiflett' ],
+    categories: [ 'PHP' ]
+  },
+  {
+    _id: 272,
+    title: 'Swing Second Edition',
+    isbn: '193011088X',
+    pageCount: 912,
+    publishedDate: ISODate("2003-02-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/robinson2.jpg',
+    longDescription: "This book builds on the successful approach of the first edition of Swing, once again taking the power and flexibility of Java's Swing library to its limits. Using a fast-paced style, it starts by introducing each of the Swing components and continues with production-quality code examples in which Swing features are customized, combined, and vigorously exercised to demonstrate real-world usage.    With over 400 pages of revised text, additional examples, and new material to bring the book up to date with J2SE 1.4, Swing Second Edition includes complete coverage of the new JSpinner and JFormattedTextField components, the new Focus and Keyboard architectures, and many other new and enhanced Swing features. Three new chapters have also been added to cover the construction of HTML and XML editor applications, and how to work with the new Drag & Drop architecture.",
+    status: 'PUBLISH',
+    authors: [],
+    categories: [ 'Java', 'Internet' ]
+  },
+  {
+    _id: 275,
+    title: 'The Cloud at Your Service',
+    isbn: '1935182528',
+    pageCount: 200,
+    publishedDate: ISODate("2010-11-22T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/rosenberg.jpg',
+    status: 'PUBLISH',
+    authors: [ 'Jothy Rosenberg', 'Arthur Mateos' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 283,
+    title: 'Multiprotocol over ATM',
+    isbn: '138892709',
+    pageCount: 341,
+    publishedDate: ISODate("1998-03-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/schmidt.jpg',
+    shortDescription: 'With the detailed coverage of the entire set of protocols in Multiprotocol over ATM, you can be equal to the task.',
+    longDescription: "Networks constructed with current ATM protocol design standards exceed by far former network capabilities. Unfortunately, this new ATM power and flexibility come at the cost of greater complexity. With the detailed coverage of the entire set of protocols in Multiprotocol over ATM, you can be equal to the task. If you're a network manager or designer, responsible for planning, building, or managing an enterprise or campus network, this book is for you.",
+    status: 'PUBLISH',
+    authors: [ 'Andrew Schmidt', 'Daniel Minoli' ],
+    categories: [ 'Internet', 'Networking' ]
+  },
+  {
+    _id: 285,
+    title: 'Java 3D Programming',
+    isbn: '1930110359',
+    pageCount: 400,
+    publishedDate: ISODate("2002-03-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/selman.jpg',
+    longDescription: 'Java 3D Programming steps programmers through the important design and implementation phases of developing a successful Java 3D application. The book provides invaluable guidance on whether to use Java 3D, user interface design, geometry creation, scene manipulation and final optimizations. The book does not attempt to exhaustively cover the API or replicate the official documentation but rather serves as a roadmap to alert programmers of design issues and potential pitfalls.    The author distills 12 months of using the Java 3D API for commercial projects, as well as innumerable discussions on the Java 3D email list into a book that all Java 3D developers will appreciate. Experienced Java 3D developers will applaud an authoritative resource containing the state-of-the-art in techniques and workarounds, while novice Java 3D programmers will gain a fast-track into Java 3D development, avoiding the confusion, frustration and time wasted learning Java 3D techniques and terminology.    Java 3D Programming comes complete with a comprehensive set of programming examples to illustrate the techniques, features, workarounds and bug fixes contained in the main text.    Readers of this book would include students and postgraduate researchers developing visualization applications for academia. Moderately experienced in Java, some experience of 3D graphics, little or no experience of Java 3D is needed. R+D s/w engineers at commercial institutions. Experienced Java developers, experienced with OpenGL or VRML, little or no experience with Java 3D.',
+    status: 'PUBLISH',
+    authors: [ 'Daniel Selman' ],
+    categories: [ 'Java', 'Internet', 'Computer Graph' ]
+  },
+  {
+    _id: 286,
+    title: 'Liferay in Action',
+    isbn: '193518282X',
+    pageCount: 375,
+    publishedDate: ISODate("2011-09-20T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/sezov.jpg',
+    status: 'PUBLISH',
+    authors: [ 'Richard Sezov', 'Jr' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 287,
+    title: 'JSP Tag Libraries',
+    isbn: '193011009X',
+    pageCount: 656,
+    publishedDate: ISODate("2001-05-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/shachor.jpg',
+    longDescription: 'JSP Tag Libraries is a bible for serious JSP developers. The reader will become acquainted with the world of custom JSP tags--new JSP technology that is beginning to have an enormous impact on the way people are developing JSP.    JSP tags are Java components that can be used from within a JSP file. By representing these components as tags, code authors can open up their JSP development to the everyday content developer as well as improve their code reuse and separation between presentation and business logic.    The book is fully loaded with many real-world tags including tags to perform iterations, access databases, EJBs, email systems and JavaBeans. To make the tag usage even more real, the book also offers two full-scale case studies in which the reader will see how tags can be used in the context of:    e-Commerce applications  WAP applications that work with current cellular phones  This book covers all aspects of JSP Tag development for Scriptlet-free generation of online content. It focuses on reusable component-centric design via JavaBeans and custom tags to separate presentation from implementation.',
+    status: 'PUBLISH',
+    authors: [ 'Gal Shachor', 'Adam Chace', 'Magnus Rydin' ],
+    categories: [ 'Java', 'Internet' ]
+  },
+  {
+    _id: 289,
+    title: 'Instant Messaging in Java',
+    isbn: '1930110464',
+    pageCount: 402,
+    publishedDate: ISODate("2002-03-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/shigeoka.jpg',
+    shortDescription: 'This intermediate Java programming book provides Java programmers with the information and tools needed to create your own IM client and server software.',
+    longDescription: "Instant Messaging has exploded into the online world and is a wildly popular service of the largest Internet Service Providers (ISP) like AOL with AOL Instant Messenger, MSN with Microsoft Messenger, and Yahoo with Yahoo Messenger. Millions of Internet users everyday exchange IM s and its use beyond messaging is just around the corner. For example, the new Microsoft .NET platform will be using instant messaging technology for data exchange.    This intermediate Java programming book provides Java programmers with the information and tools needed to create your own IM client and server software. You can use the software to create your own IM systems or integrate IM features into your existing software. Imagine allowing your customers to chat directly with technical support or other users from within your application!    This book focuses on the open source Jabber XML-based IM protocols (www.jabber.org) to create Java IM software. These open protocols allows your IM software to seamlessly communicate with the large number of other Jabber clients and servers available including commercial Jabber systems like the one that powers Disney's go.com IM.    Readers are assumed to know how to program in Java. No prior knowledge of Jabber or IM is needed.",
+    status: 'PUBLISH',
+    authors: [ 'Iain Shigeoka' ],
+    categories: [ 'Internet', 'Java' ]
+  },
+  {
+    _id: 297,
+    title: 'Magical A-Life Avatars',
+    isbn: '1884777589',
+    pageCount: 450,
+    publishedDate: ISODate("2000-12-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/small.jpg',
+    shortDescription: '"Distinctive book explaining how to get intelligent software agents to work." --Clipcode.com',
+    longDescription: "Here's a book guaranteed to inspire your creativity and get you looking at the Internet and the World Wide Web with new eyes. Modeling its vision on evolutionary biology, Magical A-Life Avatars uses the example environment of Macromedia Director to create:    imaginative Intranets  original Internet services and applications  new approaches to e-commerce and distance learning  smart agents and Internet robots  brain-like processing modules for adaptation and learning  novel forms of information processing  Magical A-Life Avatars shows, with practical examples, how to bring intelligence to your Website and create Internet interfaces that will increase your competitive advantage. If you're interested in cutting-edge website design and application, this book is for you.",
+    status: 'PUBLISH',
+    authors: [ 'Peter Small' ],
+    categories: [ 'Internet', 'Theory' ]
+  },
+  {
+    _id: 309,
+    title: 'Bitter EJB',
+    isbn: '1930110952',
+    pageCount: 440,
+    publishedDate: ISODate("2003-05-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/tate2.jpg',
+    shortDescription: `"The book's informal tone offers a refreshing change from the ubiquitous preachiness of other EJB tomes. It's pragmatic and doesn't tap dance around the fact that EJBs are often used incorrectly in enterprise development... it's an effective way to avoid the potholes that have forced developers off track in the past." -- Software Development Magazine`,
+    longDescription: "In Bitter EJB, Bruce Tate and his co-authors continue the entertaining and engaging writing style of relating true-life adventure sport experiences to antipattern themes established in Bruce's first book, the best selling Bitter Java.    This more advanced book explores antipatterns, or common traps, within the context of EJB technology.    EJB is experiencing the mixture of practical success and controversy that accompanies a new and quickly-changing framework. Bitter EJB takes the swirling EJB controversies head-on. It offers a practical approach to design: how to become a better programmer by studying problems and solutions to the most important problems surrounding the technology.    The flip side of design patterns, antipatterns, are a fun and interesting way to take EJB expertise to the next level. The book covers many different aspects of EJB, from transactions to persistence to messaging, as well as performance and testing.    Bitter EJB will teach programmers to do the following:    Identify EJB persistence strategies  Choose Entity bean alternatives  Use EJB message driven beans  Know when to apply or avoid stateful session beans  Create efficient build strategies with XDoclet, Ant and JUnit  Automate performance tuning",
+    status: 'PUBLISH',
+    authors: [ 'Bruce Tate', 'Mike Clark', 'Bob Lee', 'Patrick Linskey' ],
+    categories: [ 'Java', 'Internet' ]
+  },
+  {
+    _id: 312,
+    title: 'JDK 1.4 Tutorial',
+    isbn: '1930110456',
+    pageCount: 408,
+    publishedDate: ISODate("2002-03-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/travis.jpg',
+    longDescription: "Java is a success. It is now used across the programming landscape, from embedded devices to enterprise-class distributed systems. As Java's use increases, the pressure grows for it to expand to meet the diverse needs of the developer communities. The latest edition of Java, JDK 1.4 (or J2SE 1.4), includes new features like a new I/O system, a persistent preferences framework, Java Web Start, and Java regular expressions.    This book lets experienced developers as well as novices learn JDK 1.4's new features quickly. It provides a clear exposition of the important new topics with plenty of well documented code. All the examples are substantial and solve real-world problems but aren't cluttered with unnecessary details. The new features are covered in a comprehensive and matter-of-fact way without digressions into philosophy or theory. After reading this book, a developer will be able to use Java's new features with confidence and skill.",
+    status: 'PUBLISH',
+    authors: [ 'Gregory M. Travis' ],
+    categories: [ 'Java', 'Internet' ]
+  },
+  {
+    _id: 327,
+    title: 'Java 2 Micro Edition',
+    isbn: '1930110332',
+    pageCount: 504,
+    publishedDate: ISODate("2002-03-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/white.jpg',
+    longDescription: 'Java2, Micro Edition (J2ME) is a technology defined by many specifications. These specifications help J2ME address the diverse needs of this wide spectrum of consumer products. This guide describes the architecture of J2ME and demonstrates the various specifications for programming Java applications.    Through the use of a tutorial application and various programming examples, the common elements of most applications, namely user interface, event handling, data storage, networking, and input/output are examined. Also covered are design considerations when building software for resource-constrained devices as well as J2ME competition and associated technologies in these devices.    Tutorial and API example application source code downloads will be available from this site.',
+    status: 'PUBLISH',
+    authors: [ 'James P. White', 'David A. Hemphill' ],
+    categories: [ 'Java', 'Internet' ]
+  }
+]
+Type "it" for more
+livrosColecao> it
+[
+  {
+    _id: 331,
+    title: 'Java Servlets by Example',
+    isbn: '188477766X',
+    pageCount: 550,
+    publishedDate: ISODate("2002-12-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/williamson.jpg',
+    longDescription: "Although CGI scripts provide 80% of today's server side processing, they are slow, inefficient, and memory-hungry. A new species is evolving to take their place, one which is lean, fast, portable, and easy to maintain: Java servlets.    Servlets are not merely an alternative to CGI, for they can do much more. Servlets have opened the door to a world of client/server applications that would have been too difficult or too time-consuming to consider before.    Java Servlets: By Example takes the reader into the world of servlets, moving example by example from the simple to the complex. An early chapter explains the simple HTML form processing through servlets. A later chapter shows how to connect a Java applet to a servlet, which is itself connected to a database.    Java Servlets: By Example is full of real-world, ready-to-run example code. Each chapter deals with a new problem and takes the reader through a series of servlet-based solutions. However, the book is detailed enough that it may also serve as a reference for the developer.",
+    status: 'PUBLISH',
+    authors: [ 'Alan R. Williamson' ],
+    categories: [ 'Java', 'Internet' ]
+  },
+  {
+    _id: 332,
+    title: 'XML Programming with VB and ASP',
+    isbn: '1884777872',
+    pageCount: 320,
+    publishedDate: ISODate("1999-12-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/wilson.jpg',
+    longDescription: "Here's a book that shows you when and how to use XML from both a programming and business perspective. Laden with source code, XML Programming with VB and ASP helps you build solutions that are flexible, future-proof, and self-describing. It will help you apply XML concepts between the client and the server and the server and data objects or data services.    Finally, you have everything a VB and ASP developer needs to keep up with the explosive growth of XML.",
+    status: 'PUBLISH',
+    authors: [ 'Mark Wilson', 'Tracey Wilson' ],
+    categories: [ 'XML', 'Internet' ]
+  }
+]
+livrosColecao> it
+no cursor
+livrosColecao> it
+no cursor
+livrosColecao> it
+no cursor
+livrosColecao>
+
+livrosColecao> it
+no cursor
+livrosColecao> db.livros.find({pageCount:{$gt:400}})
+[
+  {
+    _id: 1,
+    title: 'Unlocking Android',
+    isbn: '1933988673',
+    pageCount: 416,
+    publishedDate: ISODate("2009-04-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg',
+    shortDescription: "Unlocking Android: A Developer's Guide provides concise, hands-on instruction for the Android operating system and development tools. This book teaches important architectural concepts in a straightforward writing style and builds on this with practical and useful examples throughout.",
+    longDescription: "Android is an open source mobile phone platform based on the Linux operating system and developed by the Open Handset Alliance, a consortium of over 30 hardware, software and telecom companies that focus on open standards for mobile devices. Led by search giant, Google, Android is designed to deliver a better and more open and cost effective mobile experience.    Unlocking Android: A Developer's Guide provides concise, hands-on instruction for the Android operating system and development tools. This book teaches important architectural concepts in a straightforward writing style and builds on this with practical and useful examples throughout. Based on his mobile development experience and his deep knowledge of the arcane Android technical documentation, the author conveys the know-how you need to develop practical applications that build upon or replace any of Androids features, however small.    Unlocking Android: A Developer's Guide prepares the reader to embrace the platform in easy-to-understand language and builds on this foundation with re-usable Java code examples. It is ideal for corporate and hobbyists alike who have an interest, or a mandate, to deliver software functionality for cell phones.    WHAT'S INSIDE:        * Android's place in the market      * Using the Eclipse environment for Android development      * The Intents - how and why they are used      * Application classes:            o Activity            o Service            o IntentReceiver       * User interface design      * Using the ContentProvider to manage data      * Persisting data with the SQLite database      * Networking examples      * Telephony applications      * Notification methods      * OpenGL, animation & multimedia      * Sample Applications  ",
+    status: 'PUBLISH',
+    authors: [ 'W. Frank Ableson', 'Charlie Collins', 'Robi Sen' ],
+    categories: [ 'Open Source', 'Mobile' ]
+  },
+  {
+    _id: 2,
+    title: 'Android in Action, Second Edition',
+    isbn: '1935182722',
+    pageCount: 592,
+    publishedDate: ISODate("2011-01-14T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson2.jpg',
+    shortDescription: `Android in Action, Second Edition is a comprehensive tutorial for Android developers. Taking you far beyond "Hello Android," this fast-paced book puts you in the driver's seat as you learn important architectural concepts and implementation strategies. You'll master the SDK, build WebKit apps using HTML 5, and even learn to extend or replace Android's built-in features by building useful and intriguing examples. `,
+    longDescription: `When it comes to mobile apps, Android can do almost anything   and with this book, so can you! Android runs on mobile devices ranging from smart phones to tablets to countless special-purpose gadgets. It's the broadest mobile platform available.    Android in Action, Second Edition is a comprehensive tutorial for Android developers. Taking you far beyond "Hello Android," this fast-paced book puts you in the driver's seat as you learn important architectural concepts and implementation strategies. You'll master the SDK, build WebKit apps using HTML 5, and even learn to extend or replace Android's built-in features by building useful and intriguing examples. `,
+    status: 'PUBLISH',
+    authors: [ 'W. Frank Ableson', 'Robi Sen' ],
+    categories: [ 'Java' ]
+  },
+  {
+    _id: 4,
+    title: 'Flex 3 in Action',
+    isbn: '1933988746',
+    pageCount: 576,
+    publishedDate: ISODate("2009-02-02T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg',
+    longDescription: "New web applications require engaging user-friendly interfaces   and the cooler, the better. With Flex 3, web developers at any skill level can create high-quality, effective, and interactive Rich Internet Applications (RIAs) quickly and easily. Flex removes the complexity barrier from RIA development by offering sophisticated tools and a straightforward programming language so you can focus on what you want to do instead of how to do it. And now that the major components of Flex are free and open-source, the cost barrier is gone, as well!    Flex 3 in Action is an easy-to-follow, hands-on Flex tutorial. Chock-full of examples, this book goes beyond feature coverage and helps you put Flex to work in real day-to-day tasks. You'll quickly master the Flex API and learn to apply the techniques that make your Flex applications stand out from the crowd.    Interesting themes, styles, and skins  It's in there.  Working with databases  You got it.  Interactive forms and validation  You bet.  Charting techniques to help you visualize data  Bam!  The expert authors of Flex 3 in Action have one goal   to help you get down to business with Flex 3. Fast.    Many Flex books are overwhelming to new users   focusing on the complexities of the language and the super-specialized subjects in the Flex eco-system; Flex 3 in Action filters out the noise and dives into the core topics you need every day. Using numerous easy-to-understand examples, Flex 3 in Action gives you a strong foundation that you can build on as the complexity of your projects increases.",
+    status: 'PUBLISH',
+    authors: [ 'Tariq Ahmed with Jon Hirschi', 'Faisal Abid' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 5,
+    title: 'Flex 4 in Action',
+    isbn: '1935182420',
+    pageCount: 600,
+    publishedDate: ISODate("2010-11-15T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed2.jpg',
+    longDescription: `Using Flex, you can create high-quality, effective, and interactive Rich Internet Applications (RIAs) quickly and easily. Flex removes the complexity barrier from RIA development by offering sophisticated tools and a straightforward programming language so you can focus on what you want to do instead of how to do it. And the new features added in Flex 4 give you an even wider range of options!    Flex 4 in Action is an easy-to-follow, hands-on Flex tutorial that goes beyond feature coverage and helps you put Flex to work in real day-to-day tasks. You'll quickly master the Flex API and learn to apply the techniques that make your Flex applications stand out from the crowd.    The expert authors of Flex 4 in Action have one goal-to help you get down to business with Flex. Fast. Flex 4 in Action filters out the noise and dives into the core topics you need every day. Using numerous easy-to-understand examples, Flex 4 in Action gives you a strong foundation that you can build on as the complexity of your projects increases.    Interesting themes, styles, and skins  It's in there.  Working with databases  You got it.  Interactive forms and validation  You bet.  Charting techniques to help you visualize data  Bam!  And you'll get full coverage of these great Flex 4 upgrades:  Next generation Spark components-New buttons, form inputs, navigation controls and other visual components replace the Flex 3 "Halo" versions. Spark components are easier to customize, which makes skinning and theme design much faster  A new "network monitor" allows you to see the data communications between a Flex application and a backend server, which helps when trying to debug applications that are communicating to another system/service  Numerous productivity boosting features that speed up the process of creating applications  A faster compiler to take your human-written source code and convert it into a machine-readable format  Built-in support for unit testing allows you to improve the quality of your software, and reduce the time spent in testing`,
+    status: 'PUBLISH',
+    authors: [ 'Tariq Ahmed', 'Dan Orlando', 'John C. Bland II', 'Joel Hooks' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 6,
+    title: 'Collective Intelligence in Action',
+    isbn: '1933988312',
+    pageCount: 425,
+    publishedDate: ISODate("2008-10-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/alag.jpg',
+    longDescription: "There's a great deal of wisdom in a crowd, but how do you listen to a thousand people talking at once  Identifying the wants, needs, and knowledge of internet users can be like listening to a mob.    In the Web 2.0 era, leveraging the collective power of user contributions, interactions, and feedback is the key to market dominance. A new category of powerful programming techniques lets you discover the patterns, inter-relationships, and individual profiles   the collective intelligence   locked in the data people leave behind as they surf websites, post blogs, and interact with other users.    Collective Intelligence in Action is a hands-on guidebook for implementing collective-intelligence concepts using Java. It is the first Java-based book to emphasize the underlying algorithms and technical implementation of vital data gathering and mining techniques like analyzing trends, discovering relationships, and making predictions. It provides a pragmatic approach to personalization by combining content-based analysis with collaborative approaches.    This book is for Java developers implementing collective intelligence in real, high-use applications. Following a running example in which you harvest and use information from blogs, you learn to develop software that you can embed in your own applications. The code examples are immediately reusable and give the Java developer a working collective intelligence toolkit.    Along the way, you work with, a number of APIs and open-source toolkits including text analysis and search using Lucene, web-crawling using Nutch, and applying machine learning algorithms using WEKA and the Java Data Mining (JDM) standard.",
+    status: 'PUBLISH',
+    authors: [ 'Satnam Alag' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 7,
+    title: 'Zend Framework in Action',
+    isbn: '1933988320',
+    pageCount: 432,
+    publishedDate: ISODate("2008-12-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/allen.jpg',
+    shortDescription: 'Zend Framework in Action is a comprehensive tutorial that shows how to use the Zend Framework to create web-based applications and web services. This book takes you on an over-the-shoulder tour of the components of the Zend Framework as you build a high quality, real-world web application.',
+    longDescription: `From rather humble beginnings as the Personal Home Page scripting language, PHP has found its way into almost every server, corporation, and dev shop in the world. On an average day, somewhere between 500,000 and 2 million coders do something in PHP. Even when you use a well-understood language like PHP, building a modern web application requires tools that decrease development time and cost while improving code quality. Frameworks such as Ruby-on-Rails and Django have been getting a lot of attention as a result.     For PHP coders, the Zend Framework offers that same promise without the need to move away from PHP. This powerful collection of components can be used in part or as a whole to speed up the development process. Zend Framework has the backing of Zend Technologies; the driving force behind the PHP programming language in which it is written. The first production release of the Zend Framework became available in July of 2007.    Zend Framework in Action is a comprehensive tutorial that shows how to use the Zend Framework to create web-based applications and web services. This book takes you on an over-the-shoulder tour of the components of the Zend Framework as you build a high quality, real-world web application. This book is organized around the techniques you'll use every day as a web developer "data handling, forms, authentication, and so forth. As you follow the running example, you'll learn to build interactive Ajax-driven features into your application without sacrificing nuts-and-bolts considerations like security and performance.  This book is aimed at the competent PHP developer who wants to master framework-driven web development. Zend Framework in Action goes beyond the docs but still provides quick access to the most common topics encountered in the development of web applications.  `,
+    status: 'PUBLISH',
+    authors: [ 'Rob Allen', 'Nick Lo', 'Steven Brown' ],
+    categories: [ 'Web Development' ]
+  },
+  {
+    _id: 11,
+    title: 'Flexible Rails',
+    isbn: '1933988509',
+    pageCount: 592,
+    publishedDate: ISODate("2008-01-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/armstrong.jpg',
+    shortDescription: `"Flexible Rails created a standard to which I hold other technical books. You definitely get your money's worth."`,
+    longDescription: `Rails is a fantastic tool for web application development, but its Ajax-driven interfaces stop short of the richness you gain with a tool like Adobe Flex. Simply put, Flex is the most productive way to build the UI of rich Internet applications, and Rails is the most productive way to rapidly build a database-backed CRUD application. Together, they're an amazing combination.    Flexible Rails is a book about how to use Ruby on Rails and Adobe Flex to build next-generation rich Internet applications (RIAs). The book takes you to the leading edge of RIA development, presenting examples in Flex 3 and Rails 2.    This book is not an exhaustive Ruby on Rails tutorial, nor a Flex reference manual. (Adobe ships over 3000 pages of PDF reference documentation with Flex.) Instead, it's an extensive tutorial, developed iteratively, how to build an RIA using Flex and Rails together. You learn both the specific techniques you need to use Flex and Rails together as well as the development practices that make the combination especially powerful.    The example application built in the book is MIT-licensed, so readers can use it as the basis for their own applications. In fact, one reader has already built an agile project management tool based on the book example!    With this book, you learn Flex by osmosis. You can read the book and follow along even if you have never used Flex before. Consider it "Flex Immersion." You absorb the key concepts of Flex as you go through the process of building the application.    You will also learn how Flex and Rails integrate with HTTPService and XML, and see how RESTful Rails controller design gracefully supports using the same controller actions for Flex and HTML clients. The author will show you how Cairngorm can be used to architect larger Flex applications, including tips to use Cairngorm in a less verbose way with HTTPService to talk to Rails.    Flexible Rails is for both Rails developers who are interested in Flex, and Flex developers who are interested in Rails. For a Rails developer, Flex allows for more dynamic and engaging user interfaces than are possible with Ajax. For a Flex developer, Rails provides a way to rapidly build the ORM and services layer of the application.`,
+    status: 'PUBLISH',
+    authors: [ 'Peter Armstrong' ],
+    categories: [ 'Web Development' ]
+  },
+  {
+    _id: 16,
+    title: 'Brownfield Application Development in .NET',
+    isbn: '1933988711',
+    pageCount: 550,
+    publishedDate: ISODate("2010-04-16T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/baley.jpg',
+    shortDescription: "Brownfield Application Development in .Net shows you how to approach legacy applications with the state-of-the-art concepts, patterns, and tools you've learned to apply to new projects. Using an existing application as an example, this book guides you in applying the techniques and best practices you need to make it more maintainable and receptive to change.",
+    longDescription: `It's easy to get excited about building a new software project from scratch. So-called "greenfield" projects often involve learning new technology and the opportunity for experimentation. Working on established software projects may seem less glamorous.    Most software developers have inherited a monolithic application where the day-to-day tasks involve maintenance, incremental improvements, or even cleaning up the mess another programmer left behind. These legacy or brownfield projects often have tightly coupled components, low cohesion, and poor separation of concerns, making them fragile and resistant to change.    Brownfield Application Development in .Net shows you how to approach legacy applications with the state-of-the-art concepts, patterns, and tools you've learned to apply to new projects. Using an existing application as an example, this book guides you in applying the techniques and best practices you need to make it more maintainable and receptive to change.    Starting with the build process and the introduction of unit tests, the authors show you how to set up the application so that in later chapters, you can make incremental changes aimed at decoupling components from each other. Each practice introduced will increase your confidence and ability to make subsequent changes to your code.    As the book proceeds, the authors introduce frameworks and tools commonly used today while still approaching the subject from a conceptual level so that you can substitute alternate tools as appropriate. This book examines the reasons why a tool is necessary, not the tool itself. Because the book is based on the authors' experiences, Brownfield Application Development in .Net moves beyond the theories and shows you the techniques you need to be successful.`,
+    status: 'PUBLISH',
+    authors: [ 'Kyle Baley', 'Donald Belcham' ],
+    categories: [ 'Microsoft' ]
+  },
+  {
+    _id: 18,
+    title: 'Distributed Application Development with PowerBuilder 6.0',
+    isbn: '1884777686',
+    pageCount: 504,
+    publishedDate: ISODate("1998-06-01T07:00:00.000Z"),
+    longDescription: 'Distributed Application Development with PowerBuilder 6.0 is a vital source for the PowerBuilder programmer; it provides the sort of detailed coverage of Distributed PowerBuilder that you can find nowwhere else.    The book opens with a discussion of distributed computing in general, as well as its design principles and technologies. Then Distributed PowerBuilder is examined in detail. By building a simple application step by step, the author discusses all of the concepts and components needed for building a PowerBuilder application and shows how to make the application available over a network.    Finally, the author explores how PowerBuilder can be used in distributed solutions both with and without using DPB.    Distributed Application Development with PowerBuilder 6.0 is for any PowerBuilder developer looking for information on distributed computing options with the PowerBuilder environment. IS managers, system architects, and developers using many different technologies can learn how PowerBuilder can be used as all or part of the solution for building distributed applications.    The main topic of this book is Distributed PowerBuilder (DPB). It covers the basics of building a DPB application and walks through each new feature with examples including the Shared object, DataWindow synchronization, Server Push and Web.PB. It also explains distributed computing technologies and design principles so that your application can be built to handle the stresses of a distributed environment.  ',    status: 'PUBLISH',
+    authors: [ 'Michael J. Barlotta' ],
+    categories: [ 'PowerBuilder' ]
+  },
+  {
+    _id: 19,
+    title: 'Jaguar Development with PowerBuilder 7',
+    isbn: '1884777864',
+    pageCount: 550,
+    publishedDate: ISODate("1999-08-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/barlotta2.jpg',
+    shortDescription: 'Jaguar Development with PowerBuilder 7 is the definitive guide to distributed application development with PowerBuilder. It is the only book dedicated to preparing PowerBuilder developers for Jaguar applications and has been approved by Sybase engineers and product specialists who build the tools described in the book.',
+    longDescription: 'Jaguar Development with PowerBuilder 7 is the definitive guide to distributed application development with PowerBuilder. It is the only book dedicated to preparing PowerBuilder developers for Jaguar applications and has been approved by Sybase engineers and product specialists who build the tools described in the book.    Jaguar Development with PowerBuilder 7 focuses on getting you up to speed on Jaguar and PowerBuilder, and it is packed with code samples to guide you every step of the way. It covers each step involved in application development, from setting up the development environment to deploying a production application.    Even a PowerBuilder developer with no experience in distributed technologies or Jaguar CTS will learn what it takes to build an application. Jaguar Development with PowerBuilder 7 covers:    Developing Component-centric Applications  Building Jaguar CTS Components/Clients  CORBA  Adaptive SQL Anywhere  Adaptive Server Enterprise  and lots more!',
+    status: 'PUBLISH',
+    authors: [ 'Michael Barlotta' ],
+    categories: [ 'PowerBuilder', 'Client-Server' ]
+  },
+  {
+    _id: 21,
+    title: '3D User Interfaces with Java 3D',
+    isbn: '1884777902',
+    pageCount: 520,
+    publishedDate: ISODate("2000-08-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/barrilleaux.jpg',
+    longDescription: `3D User Interfaces with Java 3D is a practical guide for providing next-generation applications with 3D user interfaces for manipulation of in-scene objects. Emphasis is on standalone and web-based business applications, such as for online sales and mass customization, but much of what this book offers has broad applicability to 3D user interfaces in other pursuits such as scientific visualization and gaming.  This book provides an extensive conceptual framework for 3D user interface techniques, and an in-depth introduction to user interface support in the Java 3D API, including such topics as picking, collision, and drag-and-drop. Many of the techniques are demonstrated in a Java 3D software framework included with the book, which also provides developers with many general-purpose building blocks for constructing their own user interfaces.    Applications and their use of 3D are approached realistically. The book is geared towards sophisticated user interfaces for the "everyday user" who doesn't have a lot of time to learn another application--much less a complicated one--and an everyday computer system without exotic devices like head mounted displays and data gloves. Perhaps the best description of this book is: "A roadmap from Java 3D to 'Swing 3D'."`,
+    status: 'PUBLISH',
+    authors: [ 'Jon Barrilleaux' ],
+    categories: [ 'Java', 'Computer Graphics' ]
+  },
+  {
+    _id: 24,
+    title: 'Java Persistence with Hibernate',
+    isbn: '1932394885',
+    pageCount: 880,
+    publishedDate: ISODate("2006-11-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/bauer2.jpg',
+    shortDescription: '"...this book is the ultimate solution. If you are going to use Hibernate in your application, you have no other choice, go rush to the store and get this book." --JavaLobby',
+    longDescription: "Persistence -- the ability of data to outlive an instance of a program -- is central to modern applications. Hibernate, the most popular Java persistence tool, provides automatic and transparent object/relational mapping so it's a snap to work with SQL databases in Java applications. Hibernate conforms to the new EJB 3.0 and Java Persistence 1.0 standards.    Java Persistence with Hibernate explores Hibernate by developing an application that ties together hundreds of individual examples. You'll immediately dig into the rich programming model of Hibernate 3.2 and Java Persistence, working through queries, fetching strategies, caching, transactions, conversations, and more. You'll also appreciate the well-illustrated discussion of best practices in database design, object/relational mapping, and optimization techniques.    In this revised edition of Manning's bestselling Hibernate in Action, authors Christian Bauer and Gavin King -- the founder of the Hibernate project -- cover Hibernate 3.2 in detail along with the EJB 3.0 and Java Persistence 1.0 standards.",
+    status: 'PUBLISH',
+    authors: [ 'Christian Bauer', 'Gavin King' ],
+    categories: [ 'Java' ]
+  },
+  {
+    _id: 25,
+    title: 'JSTL in Action',
+    isbn: '1930110529',
+    pageCount: 480,
+    publishedDate: ISODate("2002-07-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/bayern.jpg',
+    longDescription: "JSTL is an important simplification of the Java web platform. With JSTL, page authors can now write dynamic pages using standard HTML-like tags and an easy-to-learn expression language. JSTL is a standard from the Java Community Process, and its expression language will become part of JSP 2.0.    JSTL in Action shows you how to write rich, dynamic web pages without programming. From simple loops to tricky XML processing, every feature of JSTL is covered and exercised in numerous useful examples. Whether you are a novice page author or an experienced Java programmer, this book shows you easy ways to create powerful web sites.    To help readers who don't already have a JSP container run the examples in the book, there's a free companion download here. This bundle contains a ready-to-run JSP container, a JSTL implementation, and all the book's examples.",
+    status: 'PUBLISH',
+    authors: [ 'Shawn Bayern' ],
+    categories: [ 'Internet' ]
+  },
+  {
+    _id: 28,
+    title: 'Hibernate Search in Action',
+    isbn: '1933988649',
+    pageCount: 488,
+    publishedDate: ISODate("2008-12-21T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/bernard.jpg',
+    shortDescription: '"A great resource for true database independent full text search." --Aaron Walker, base2Services',
+    longDescription: "Good search capability is one of the primary demands of a business application. Engines like Lucene provide a great starting point, but with complex applications it can be tricky to implement. It's tough to keep the index up to date, deal with the mismatch between the index structure and the domain model, handle querying conflicts, and so on.    Hibernate Search is an enterprise search tool based on Hibernate Core and Apache Lucene. It provides full text search capabilities for Hibernate-based applications without the infrastructural code required by other search engines. With this free, open-source technology, you can quickly add high-powered search features in an intelligent, maintainable way.    Hibernate Search in Action is a practical, example-oriented guide for Java developers with some background in Hibernate Core. As the first book to cover Hibernate Search, it guides you through every step to set up full text search functionality in your Java applications. The book also introduces core search techniques and reviews the relevant parts of Lucene, in particular the query capabilities.    Hibernate Search in Action also provides a pragmatic, how-to exploration of more advanced topics such as Search clustering. For anyone using Hibernate or JBoss Seam, this book is the definitive guide on how to add or enhance search features in their applications.",
+    status: 'PUBLISH',
+    authors: [ 'Emmanuel Bernard', 'John Griffin' ],
+    categories: [ 'Java' ]
+  },
+  {
+    _id: 30,
+    title: 'jQuery in Action, Second Edition',
+    isbn: '1935182323',
+    pageCount: 488,
+    publishedDate: ISODate("2010-06-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/bibeault2.jpg',
+    shortDescription: `jQuery in Action, Second Edition is a fast-paced introduction to jQuery that will take your JavaScript programming to the next level. An in-depth rewrite of the bestselling first edition, this edition provides deep and practical coverage of the latest jQuery and jQuery UI releases. The book's unique "lab pages" anchor the explanation of each new concept in a practical example. You'll learn how to traverse HTML documents, handle events, perform animations, and add Ajax to your web pages. This comprehensive guide also teaches you how jQuery interacts with other tools and frameworks and how to build jQuery plugins. `,
+    longDescription: `A really good web development framework anticipates your needs. jQuery does more   it practically reads your mind. Developers fall in love with this JavaScript library the moment they see 20 lines of code reduced to three. jQuery is concise and readable. Its unique "chaining" model lets you perform multiple operations on a page element in succession. And with version 1.4, there's even more to love about jQuery, including new effects and events, usability improvements, and more testing options.    jQuery in Action, Second Edition is a fast-paced introduction and guide. Building on the bestselling first edition, it adds new examples, more labs, and deeper explanations of important features. You   ll learn how to traverse HTML documents, handle events, perform animations, and add Ajax to your web pages. The book's unique "lab pages" anchor the explanation of each new concept in a practical example. You'll learn how jQuery interacts with other tools and frameworks and how to build jQuery plugins. This book requires a modest knowledge of JavaScript and Ajax.`,
+    status: 'PUBLISH',
+    authors: [ 'Bear Bibeault', 'Yehuda Katz' ],
+    categories: [ 'Java' ]
+  },
+  {
+    _id: 31,
+    title: 'Building Secure and Reliable Network Applications',
+    isbn: '1884777295',
+    pageCount: 591,
+    publishedDate: ISODate("1996-01-01T08:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/birman.jpg',
+    shortDescription: '"... tackles the difficult problem of building reliable distributed computing systems in a way that not only presents the principles but also describes proven practical solutions." --John Warne, BNR Europe',
+    longDescription: 'As the "network is the computer" slogan becomes reality so reliability and security of networked applications become more important. Not only are hospitals, air traffic control systems, and telephone networks becoming more networked, but business applications are increasingly based on the open world of the Internet. Stability in the face of minor accidents, software or hardware failures, or outright attack has become vital. This book provides a structured approach to the technologies currently available for building reliable solutions to these problems.    Building Secure and Reliable Network Applications reviews the most important network technologies from a security and reliability perspective and discusses the most effective solutions with an eye towards their application to real-world systems. Any computing professional who works with networked software will find this book valuable in understanding security and reliability vulnerabilities and how to address them.',
+    status: 'PUBLISH',
+    authors: [ 'Kenneth P. Birman' ],
+    categories: [ 'Networking', 'Theory' ]
+  },
+  {
+    _id: 32,
+    title: 'Ruby for Rails',
+    isbn: '1932394699',
+    pageCount: 532,
+    publishedDate: ISODate("2006-05-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/black.jpg',
+    shortDescription: 'The word is out: with Ruby on Rails you can build powerful Web applications easily and quickly! And just like the Rails framework itself, Rails applications are Ruby programs. That means you can   t tap into the full power of Rails unless you master the Ruby language.',
+    longDescription: "Ruby for Rails helps Rails developers achieve Ruby mastery. Each chapter deepens your Ruby knowledge and shows you how it connects to Rails. You   ll gain confidence working with objects and classes and learn how to leverage Ruby   s elegant, expressive syntax for Rails application power. And you'll become a better Rails developer through a deep understanding of the design of Rails itself and how to take advantage of it.    Newcomers to Ruby will find a Rails-oriented Ruby introduction that   s easy to read and that includes dynamic programming techniques, an exploration of Ruby objects, classes, and data structures, and many neat examples of Ruby and Rails code in action.    Ruby for Rails: the Ruby guide for Rails developers!",
+    status: 'PUBLISH',
+    authors: [ 'David A. Black' ],
+    categories: [ 'Web Development' ]
+  },
+  {
+    _id: 33,
+    title: 'The Well-Grounded Rubyist',
+    isbn: '1933988657',
+    pageCount: 520,
+    publishedDate: ISODate("2009-04-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/black2.jpg',
+    shortDescription: 'What would appear to be the most complex topic of the book is in fact surprisingly easy to assimilate, and one realizes that the efforts of the author to gradually lead us to a sufficient knowledge of Ruby in order to tackle without pain the most difficult subjects, bears its fruit.       Eric Grimois, Developpez.com',
+    longDescription: `Interest in Ruby has exploded. Developers discovering this elegant, dynamic language quickly learn that Ruby is a powerful alternative to traditional static languages like Java or C++. It runs in most operating environments and can handle virtually any programming task you throw at it. Ruby code is clean and elegant. Best of all, Ruby is dynamic, which means that it's designed to react at runtime to changes in an application's environment or requirements.    The Well-Grounded Rubyist takes you from interested novice to proficient practitioner. It's a beautifully written tutorial that begins with the basic steps to get your first Ruby program up and running and goes on to explore sophisticated topics like callable objects, reflection, and threading The book concentrates on the language, preparing you for any way you may choose to use Ruby. Whether the topic is simple or tough, the book's easy-to-follow examples and explanations give you immediate confidence as you build your Ruby programming skills.    The Well-Grounded Rubyist is a thoroughly revised and updated edition of the best-selling Ruby for Rails. In this new book, expert author David A. Black moves beyond Rails and presents a broader view of Ruby. It covers Ruby 1.9, and keeps the same sharp focus and clear writing that made Ruby for Rails stand out.    It's no wonder one reader commented: "The technical depth is just right to not distract beginners, yet detailed enough for more advanced readers."`,
+    status: 'PUBLISH',
+    authors: [ 'David A. Black' ],
+    categories: [ 'Programming' ]
+  },
+  {
+    _id: 36,
+    title: 'ASP.NET 4.0 in Practice',
+    isbn: '1935182463',
+    pageCount: 504,
+    publishedDate: ISODate("2011-05-15T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/bochicchio.jpg',
+    shortDescription: 'ASP.NET 4.0 in Practice contains real world techniques from well-known professionals who have been using ASP.NET since the first previews.',
+    longDescription: 'ASP.NET is an established technology to build web applications using Microsoft products. It drives a number of enterprise-level web sites around the world, but it can be scaled for projects of any size. The new version 4.0 is an evolutionary step: you will find a lot of new features that you will be able to leverage to build better web applications with minimal effort.    ASP.NET 4.0 in Practice contains real world techniques from well-known professionals who have been using ASP.NET since the first previews. Using a practical Problem-Solution-Discussion format, it will guide you through the most common scenarios you will face in a typical ASP.NET application, and provide solutions and suggestions to take your applications to another level.',
+    status: 'PUBLISH',
+    authors: [
+      'Daniele Bochicchio',
+      'Stefano Mostarda',
+      '',
+      'Marco De Sanctis'
+    ],
+    categories: [ 'Microsoft .NET' ]
+  },
+  {
+    _id: 39,
+    title: 'Graphics File Formats',
+    isbn: '133034054',
+    pageCount: 484,
+    publishedDate: ISODate("1995-06-01T07:00:00.000Z"),
+    thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/brown.jpg',
+    longDescription: 'Graphics File Formats is a comprehensive guide to the file formats used in computer graphics and related areas. It discusses implementation and design of file formats in a readable style focusing on the basic issues important for the evaluation or development of file formats, including  data types  design goals  color  data organization  data encoding  data compression  classification  and conversion  The second part of the book provides summaries of over 50 graphics file formats in commercial use, such as CGM, DDES, FITS, MPEG, PICT, PostScript, TIFF, QuickTime, RIB, SunRaster, and X bitmap. Following a uniform organization, these summaries are handy reference sources for those needing basic information on these formats.    Written by two computer experts, this book is intended for graphics professionals, programmers and all those in commercial, engineering and scientific applications areas who need to make decisions related to file formats from graphical data.',
+    status: 'PUBLISH',
+    authors: [ 'C. Wayne Brown', 'Barry J. Shepherd' ],
+    categories: [ 'Computer Graphics' ]
+  }
+]
+Type "it" for more
+livrosColecao> use dadosDeCarros
+switched to db dadosDeCarros
+dadosDeCarros> db.carros.find({anoFabricacao: {$gt:2018}})
+[
+  {
+    _id: 'c03',
+    marca: 'vw',
+    modelo: 'polo',
+    anoFabricacao: 2023,
+    km: 4450
+  },
+  {
+    _id: 'c04',
+    marca: 'gm',
+    modelo: 'onix',
+    anoFabricacao: 2020,
+    km: 45500
+  },
+  {
+    _id: 'c07',
+    marca: 'fiat',
+    modelo: 'mobi',
+    anoFabricacao: 2020,
+    km: 25840
+  },
+  {
+    _id: 'c08',
+    marca: 'gm',
+    modelo: 'onix',
+    anoFabricacao: 2022,
+    km: 4850
+  }
+]
+dadosDeCarros> db.carros.find({anoFabricacao: {$gte:2018}})
+[
+  { _id: 'c02', marca: 'fiat', anoFabricacao: 2018, km: 26470 },  {
+    _id: 'c03',
+    marca: 'vw',
+    modelo: 'polo',
+    anoFabricacao: 2023,
+    km: 4450
+  },
+  {
+    _id: 'c04',
+    marca: 'gm',
+    modelo: 'onix',
+    anoFabricacao: 2020,
+    km: 45500
+  },
+  {
+    _id: 'c05',
+    marca: 'fiat',
+    modelo: 'uno',
+    anoFabricacao: 2018,
+    km: 65920
+  },
+  {
+    _id: 'c07',
+    marca: 'fiat',
+    modelo: 'mobi',
+    anoFabricacao: 2020,
+    km: 25840
+  },
+  {
+    _id: 'c08',
+    marca: 'gm',
+    modelo: 'onix',
+    anoFabricacao: 2022,
+    km: 4850
+  }
+]
+dadosDeCarros> use livrosColecao
+switched to db livrosColecao
+livrosColecao> use test
+switched to db test
+test> db.primeiracolecao.find({nome: {$regex : "ma", $options: "i"}})
+
+test> db.primeiraColecao.find({nome: {$regex:"Ma"}})
+
+test>  db.primeiraColecao.find({nome: {$regex:"ma"}})
+[
+  {
+    _id: ObjectId("654b8c799a675e54f2109562"),
+    nome: 'maria',
+    idade: 25,
+    maria: 'maiara'
+  },
+  {
+    _id: ObjectId("654b8cae9a675e54f2109563"),
+    nome: 'marcos',
+    profissao: 'programador'
+  }
+]
+test> use dadosDeCarros
+switched to db dadosDeCarros
+dadosDeCarros> load("C:\Users\55899\Documents\BANCO DE DADOS II\atvMongoDB_carros")
+Error: ENOENT: no such file or directory, open 'C:\Users\55899\Users-899DocumentsBANCO DE DADOS IIatvMongoDB_carros'
+dadosDeCarros> load("C:/Users/55899/Documents/BANCO DE DADOS II/atvMongoDB_carros")
+Error: EISDIR: illegal operation on a directory, read
+dadosDeCarros> load("C:/Users/55899/Documents/BANCO DE DADOS II/atvMongoDB_carros/carros.js")
+true
+dadosDeCarros> db.carros.fin()
+TypeError: db.carros.fin is not a function
+dadosDeCarros> db.carros.find()
+[
+  {
+    _id: 'c01',
+    marca: 'ferrari',
+    modelo: 'f40',
+    anoFabricacao: 2012,
+    km: 4000
+  },
+  { _id: 'c02', marca: 'fiat', anoFabricacao: 2018, km: 26470 },  {
+    _id: 'c03',
+    marca: 'vw',
+    modelo: 'polo',
+    anoFabricacao: 2023,
+    km: 4450
+  },
+  {
+    _id: 'c04',
+    marca: 'gm',
+    modelo: 'onix',
+    anoFabricacao: 2020,
+    km: 45500
+  },
+  {
+    _id: 'c05',
+    marca: 'fiat',
+    modelo: 'uno',
+    anoFabricacao: 2018,
+    km: 65920
+  },
+  {
+    _id: 'c06',
+    marca: 'vw',
+    modelo: 'gol',
+    anoFabricacao: 2015,
+    km: 250480
+  },
+  {
+    _id: 'c07',
+    marca: 'fiat',
+    modelo: 'mobi',
+    anoFabricacao: 2020,
+    km: 25840
+  },
+  {
+    _id: 'c08',
+    marca: 'gm',
+    modelo: 'onix',
+    anoFabricacao: 2022,
+    km: 4850
+  },
+  {
+    _id: 'c09',
+    marca: 'gm',
+    modelo: 'astra',
+    anoFabricacao: 2012,
+    km: 85490
+  },
+  {
+    _id: 'c14',
+    marca: 'ferrari',
+    modelo: 'f40',
+    anoFabricacao: 2012,
+    km: 4000
+  },
+  {
+    _id: 'c15',
+    marca: 'fiat',
+    modelo: 'mobi',
+    anoFabricacao: 2018,
+    km: 26470
+  },
+  {
+    _id: 'c16',
+    marca: 'vw',
+    modelo: 'polo',
+    anoFabricacao: 2023,
+    km: 4450
+  },
+  {
+    _id: 'c17',
+    marca: 'gm',
+    modelo: 'onix',
+    anoFabricacao: 2020,
+    km: 45500
+  },
+  {
+    _id: 'c18',
+    marca: 'fiat',
+    modelo: 'uno',
+    anoFabricacao: 2018,
+    km: 65920
+  },
+  {
+    _id: 'c19',
+    marca: 'vw',
+    modelo: 'gol',
+    anoFabricacao: 2015,
+    km: 250480
+  },
+  {
+    _id: 'c20',
+    marca: 'fiat',
+    modelo: 'mobi',
+    anoFabricacao: 2020,
+    km: 25840
+  },
+  {
+    _id: 'c21',
+    marca: 'gm',
+    modelo: 'onix',
+    anoFabricacao: 2022,
+    km: 4850
+  },
+  {
+    _id: 'c22',
+    marca: 'gm',
+    modelo: 'astra',
+    anoFabricacao: 2012,
+    km: 85490
+  }
+]
+dadosDeCarros> use livrosColecao
+switched to db livrosColecao
+livrosColecao> function soma(a,b){}
+[Function: soma]
+livrosColecao> function soma(a,b){
+... c = a + b;
+... return c;
+... }
+[Function: soma]
+livrosColecao> soma(40,50)
+90
+livrosColecao> use dadosDeCarros
+switched to db dadosDeCarros
+dadosDeCarros> load("C:/Users/55899/Documents/BANCO DE DADOS II/atvMongoDB_carros/function.js")
+true
+dadosDeCarros> insereCarro("c23","ford","fiesta",2015,20341)
+ReferenceError: insereCarro is not defined
+dadosDeCarros> load("C:\Users\55899\Documents\BANCO DE DADOS II\atvMongoDB_carros/function.js")
+Error: ENOENT: no such file or directory, open 'C:\Users\55899\Users-899DocumentsBANCO DE DADOS IIatvMongoDB_carros\function.js'dadosDeCarros> load("C:/Users/55899/Documents/BANCO DE DADOS II/atvMongoDB_carros/function.js")
+true
+dadosDeCarros> insereCarro("c23","ford","fiesta",2015,20341)
+Inserção bem-sucedida
+
+dadosDeCarros> insereCarro("c22","gm","astra",2012,85490)
+Inserção bem-sucedida
+
+dadosDeCarros> insereCarro("c23","ford","fiesta",2015,20341)
+Erro: O documento com o mesmo _id já existe
+dadosDeCarros> load("C:/Users/55899/Documents/BANCO DE DADOS II/atvMongoDB_carros/fcPopularPessoas.js")
+true
+dadosDeCarros> fcPopularPessoas()
+ReferenceError: fcPopularPessoas is not defined
+dadosDeCarros> popularPessoas()
+
+dadosDeCarros> use dadosPessoais
+switched to db dadosPessoais
+dadosPessoais> show collections
+pessoas
+dadosPessoais> db.pessoas.find()
+[
+  { _id: 1, nome: 'pedro ribeiro', idade: 45, altura: 193 },
+  { _id: 2, nome: 'mateus ribeiro', idade: 21, altura: 143 },
+  { _id: 3, nome: 'marcos bezerra', idade: 87, altura: 153 },
+  {
+    _id: 4,
+    nome: 'maria de lurdes albuquerque',
+    idade: 49,
+    altura: 160
+  },
+  { _id: 5, nome: 'cintia brito', idade: 88, altura: 148 },
+  { _id: 6, nome: 'maiara pereira', idade: 22, altura: 159 },
+  { _id: 7, nome: 'maria de lurdes brito', idade: 83, altura: 157 },
+  { _id: 8, nome: 'hellen teixeira', idade: 76, altura: 157 },
+  { _id: 9, nome: 'antonia pereira', idade: 94, altura: 157 },
+  { _id: 10, nome: 'joao silva', idade: 15, altura: 197 },
+  { _id: 11, nome: 'pedro souza', idade: 57, altura: 169 },
+  { _id: 12, nome: 'emerson albuquerque', idade: 47, altura: 162 },
+  { _id: 13, nome: 'pedro bezerra', idade: 25, altura: 144 },
+  { _id: 14, nome: 'maria brito', idade: 77, altura: 197 },
+  { _id: 15, nome: 'joao pereira', idade: 48, altura: 160 },
+  { _id: 16, nome: 'cintia bezerra', idade: 78, altura: 175 },
+  { _id: 17, nome: 'gilvanir silva', idade: 43, altura: 181 },
+  { _id: 18, nome: 'leticia brito', idade: 84, altura: 194 },
+  { _id: 19, nome: 'maiara bezerra', idade: 67, altura: 181 },
+  { _id: 20, nome: 'angelina bezerra', idade: 26, altura: 151 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 21, nome: 'hellen souza', idade: 48, altura: 147 },
+  { _id: 22, nome: 'hellen bezerra', idade: 56, altura: 155 },
+  { _id: 23, nome: 'mateus bezerra', idade: 28, altura: 198 },
+  { _id: 24, nome: 'emerson souza', idade: 66, altura: 159 },
+  { _id: 25, nome: 'leticia pereira', idade: 99, altura: 195 },
+  { _id: 26, nome: 'marcos bezerra', idade: 17, altura: 197 },
+  { _id: 27, nome: 'emerson pereira', idade: 61, altura: 149 },
+  { _id: 28, nome: 'mateus silva', idade: 15, altura: 143 },
+  { _id: 29, nome: 'marcos bezerra', idade: 28, altura: 161 },
+  { _id: 30, nome: 'antonia ribeiro', idade: 38, altura: 147 },
+  { _id: 31, nome: 'gilvanir pereira', idade: 83, altura: 184 },
+  { _id: 32, nome: 'fernanda albuquerque', idade: 16, altura: 168 },
+  { _id: 33, nome: 'eric silva', idade: 33, altura: 147 },
+  { _id: 34, nome: 'cintia ribeiro', idade: 99, altura: 145 },
+  { _id: 35, nome: 'marcos bezerra', idade: 94, altura: 163 },
+  { _id: 36, nome: 'fernanda teixeira', idade: 23, altura: 180 },
+  { _id: 37, nome: 'maria de lurdes brito', idade: 85, altura: 175 },
+  { _id: 38, nome: 'eric ribeiro', idade: 94, altura: 187 },
+  { _id: 39, nome: 'joao brito', idade: 72, altura: 173 },
+  { _id: 40, nome: 'francileide bezerra', idade: 22, altura: 162 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 41, nome: 'fernanda teixeira', idade: 71, altura: 199 },
+  { _id: 42, nome: 'marcos brito', idade: 43, altura: 179 },
+  { _id: 43, nome: 'fernanda brito', idade: 69, altura: 178 },
+  { _id: 44, nome: 'antonia pereira', idade: 50, altura: 181 },
+  { _id: 45, nome: 'angelina ribeiro', idade: 23, altura: 181 },
+  { _id: 46, nome: 'maria bezerra', idade: 62, altura: 141 },
+  { _id: 47, nome: 'leticia souza', idade: 25, altura: 153 },
+  { _id: 48, nome: 'eric brito', idade: 69, altura: 151 },
+  { _id: 49, nome: 'fernanda bezerra', idade: 99, altura: 178 },
+  { _id: 50, nome: 'maiara bezerra', idade: 94, altura: 181 },
+  { _id: 51, nome: 'pedro teixeira', idade: 12, altura: 181 },
+  { _id: 52, nome: 'angelina brito', idade: 25, altura: 158 },
+  { _id: 53, nome: 'mateus albuquerque', idade: 89, altura: 155 },
+  { _id: 54, nome: 'angelina albuquerque', idade: 57, altura: 165 },
+  { _id: 55, nome: 'mateus bezerra', idade: 92, altura: 150 },
+  { _id: 56, nome: 'gilvanir silva', idade: 54, altura: 152 },
+  { _id: 57, nome: 'gilvanir teixeira', idade: 39, altura: 179 },
+  { _id: 58, nome: 'maria de lurdes teixeira', idade: 40, altura: 160 },
+  { _id: 59, nome: 'antonio neto albuquerque', idade: 55, altura: 143 },
+  { _id: 60, nome: 'gilvanir silva', idade: 16, altura: 161 }
+]
+Type "it" for more
+dadosPessoais> db.pessoas.find({nome: {$regex:"cintia"}})
+[
+  { _id: 5, nome: 'cintia brito', idade: 88, altura: 148 },
+  { _id: 16, nome: 'cintia bezerra', idade: 78, altura: 175 },
+  { _id: 34, nome: 'cintia ribeiro', idade: 99, altura: 145 },
+  { _id: 86, nome: 'cintia brito', idade: 58, altura: 143 }
+]
+dadosPessoais> db.pessoas.find({nome:{$regex:"cintia"}}).count()
+4
+dadosPessoais> it
+[
+  { _id: 5, nome: 'cintia brito', idade: 88, altura: 148 },
+  { _id: 16, nome: 'cintia bezerra', idade: 78, altura: 175 },
+  { _id: 34, nome: 'cintia ribeiro', idade: 99, altura: 145 },
+  { _id: 86, nome: 'cintia brito', idade: 58, altura: 143 }
+]
+dadosPessoais> it
+no cursor
+dadosPessoais> it
+no cursor
+dadosPessoais> it
+no cursor
+dadosPessoais> it
+no cursor
+dadosPessoais> it
+no cursor
+dadosPessoais> db.pessoas.find({nome:{$regex:"cintia"}}).count()
+4
+dadosPessoais> it
+[
+  { _id: 5, nome: 'cintia brito', idade: 88, altura: 148 },
+  { _id: 16, nome: 'cintia bezerra', idade: 78, altura: 175 },
+  { _id: 34, nome: 'cintia ribeiro', idade: 99, altura: 145 },
+  { _id: 86, nome: 'cintia brito', idade: 58, altura: 143 }
+]
+dadosPessoais> it
+no cursor
+dadosPessoais> popularPessoas()
+MongoServerError: E11000 duplicate key error collection: dadosPessoais.pessoas index: _id_ dup key: { _id: 1 }
+dadosPessoais> popularPessoas()
+MongoServerError: E11000 duplicate key error collection: dadosPessoais.pessoas index: _id_ dup key: { _id: 1 }
+dadosPessoais> db.pessoas.countDocuments()
+100
+dadosPessoais> popularPessoas()
+MongoServerError: E11000 duplicate key error collection: dadosPessoais.pessoas index: _id_ dup key: { _id: 1 }
+dadosPessoais> popularPessoas()
+MongoServerError: E11000 duplicate key error collection: dadosPessoais.pessoas index: _id_ dup key: { _id: 1 }
+dadosPessoais> popularPessoas()
+MongoServerError: E11000 duplicate key error collection: dadosPessoais.pessoas index: _id_ dup key: { _id: 1 }
+dadosPessoais> popularPessoas()
+MongoServerError: E11000 duplicate key error collection: dadosPessoais.pessoas index: _id_ dup key: { _id: 1 }
+dadosPessoais> load("C:/Users/55899/Documents/BANCO DE DADOS II/atvMongoDB_carros/fcPopularPessoas.js")
+true
+dadosPessoais> popularPessoas()
+
+dadosPessoais> db.pessoas.find()
+[
+  { _id: 1, nome: 'pedro ribeiro', idade: 45, altura: 193 },
+  { _id: 2, nome: 'mateus ribeiro', idade: 21, altura: 143 },
+  { _id: 3, nome: 'marcos bezerra', idade: 87, altura: 153 },
+  {
+    _id: 4,
+    nome: 'maria de lurdes albuquerque',
+    idade: 49,
+    altura: 160
+  },
+  { _id: 5, nome: 'cintia brito', idade: 88, altura: 148 },
+  { _id: 6, nome: 'maiara pereira', idade: 22, altura: 159 },
+  { _id: 7, nome: 'maria de lurdes brito', idade: 83, altura: 157 },
+  { _id: 8, nome: 'hellen teixeira', idade: 76, altura: 157 },
+  { _id: 9, nome: 'antonia pereira', idade: 94, altura: 157 },
+  { _id: 10, nome: 'joao silva', idade: 15, altura: 197 },
+  { _id: 11, nome: 'pedro souza', idade: 57, altura: 169 },
+  { _id: 12, nome: 'emerson albuquerque', idade: 47, altura: 162 },
+  { _id: 13, nome: 'pedro bezerra', idade: 25, altura: 144 },
+  { _id: 14, nome: 'maria brito', idade: 77, altura: 197 },
+  { _id: 15, nome: 'joao pereira', idade: 48, altura: 160 },
+  { _id: 16, nome: 'cintia bezerra', idade: 78, altura: 175 },
+  { _id: 17, nome: 'gilvanir silva', idade: 43, altura: 181 },
+  { _id: 18, nome: 'leticia brito', idade: 84, altura: 194 },
+  { _id: 19, nome: 'maiara bezerra', idade: 67, altura: 181 },
+  { _id: 20, nome: 'angelina bezerra', idade: 26, altura: 151 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 21, nome: 'hellen souza', idade: 48, altura: 147 },
+  { _id: 22, nome: 'hellen bezerra', idade: 56, altura: 155 },
+  { _id: 23, nome: 'mateus bezerra', idade: 28, altura: 198 },
+  { _id: 24, nome: 'emerson souza', idade: 66, altura: 159 },
+  { _id: 25, nome: 'leticia pereira', idade: 99, altura: 195 },
+  { _id: 26, nome: 'marcos bezerra', idade: 17, altura: 197 },
+  { _id: 27, nome: 'emerson pereira', idade: 61, altura: 149 },
+  { _id: 28, nome: 'mateus silva', idade: 15, altura: 143 },
+  { _id: 29, nome: 'marcos bezerra', idade: 28, altura: 161 },
+  { _id: 30, nome: 'antonia ribeiro', idade: 38, altura: 147 },
+  { _id: 31, nome: 'gilvanir pereira', idade: 83, altura: 184 },  { _id: 32, nome: 'fernanda albuquerque', idade: 16, altura: 168 },
+  { _id: 33, nome: 'eric silva', idade: 33, altura: 147 },
+  { _id: 34, nome: 'cintia ribeiro', idade: 99, altura: 145 },
+  { _id: 35, nome: 'marcos bezerra', idade: 94, altura: 163 },
+  { _id: 36, nome: 'fernanda teixeira', idade: 23, altura: 180 },
+  { _id: 37, nome: 'maria de lurdes brito', idade: 85, altura: 175 },
+  { _id: 38, nome: 'eric ribeiro', idade: 94, altura: 187 },
+  { _id: 39, nome: 'joao brito', idade: 72, altura: 173 },
+  { _id: 40, nome: 'francileide bezerra', idade: 22, altura: 162 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 41, nome: 'fernanda teixeira', idade: 71, altura: 199 },
+  { _id: 42, nome: 'marcos brito', idade: 43, altura: 179 },
+  { _id: 43, nome: 'fernanda brito', idade: 69, altura: 178 },
+  { _id: 44, nome: 'antonia pereira', idade: 50, altura: 181 },
+  { _id: 45, nome: 'angelina ribeiro', idade: 23, altura: 181 },  { _id: 46, nome: 'maria bezerra', idade: 62, altura: 141 },
+  { _id: 47, nome: 'leticia souza', idade: 25, altura: 153 },
+  { _id: 48, nome: 'eric brito', idade: 69, altura: 151 },
+  { _id: 49, nome: 'fernanda bezerra', idade: 99, altura: 178 },  { _id: 50, nome: 'maiara bezerra', idade: 94, altura: 181 },
+  { _id: 51, nome: 'pedro teixeira', idade: 12, altura: 181 },
+  { _id: 52, nome: 'angelina brito', idade: 25, altura: 158 },
+  { _id: 53, nome: 'mateus albuquerque', idade: 89, altura: 155 },
+  { _id: 54, nome: 'angelina albuquerque', idade: 57, altura: 165 },
+  { _id: 55, nome: 'mateus bezerra', idade: 92, altura: 150 },
+  { _id: 56, nome: 'gilvanir silva', idade: 54, altura: 152 },
+  { _id: 57, nome: 'gilvanir teixeira', idade: 39, altura: 179 },
+  { _id: 58, nome: 'maria de lurdes teixeira', idade: 40, altura: 160 },
+  { _id: 59, nome: 'antonio neto albuquerque', idade: 55, altura: 143 },
+  { _id: 60, nome: 'gilvanir silva', idade: 16, altura: 161 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 61, nome: 'antonia brito', idade: 64, altura: 149 },
+  { _id: 62, nome: 'mateus silva', idade: 54, altura: 150 },
+  { _id: 63, nome: 'marcos pereira', idade: 14, altura: 174 },
+  { _id: 64, nome: 'antonio neto teixeira', idade: 32, altura: 161 },
+  { _id: 65, nome: 'gilvanir silva', idade: 14, altura: 166 },
+  { _id: 66, nome: 'fernanda silva', idade: 48, altura: 168 },
+  { _id: 67, nome: 'leticia pereira', idade: 82, altura: 196 },
+  { _id: 68, nome: 'antonia souza', idade: 57, altura: 163 },
+  { _id: 69, nome: 'leticia silva', idade: 18, altura: 147 },
+  { _id: 70, nome: 'antonia pereira', idade: 60, altura: 191 },
+  { _id: 71, nome: 'antonio neto souza', idade: 82, altura: 176 },
+  { _id: 72, nome: 'maiara teixeira', idade: 43, altura: 155 },
+  { _id: 73, nome: 'joao bezerra', idade: 88, altura: 163 },
+  { _id: 74, nome: 'fernanda albuquerque', idade: 31, altura: 150 },
+  { _id: 75, nome: 'eric souza', idade: 94, altura: 149 },
+  {
+    _id: 76,
+    nome: 'maria de lurdes albuquerque',
+    idade: 73,
+    altura: 186
+  },
+  { _id: 77, nome: 'francileide bezerra', idade: 83, altura: 180 },
+  { _id: 78, nome: 'hellen silva', idade: 30, altura: 157 },
+  { _id: 79, nome: 'joao ribeiro', idade: 77, altura: 191 },
+  { _id: 80, nome: 'pedro ribeiro', idade: 50, altura: 156 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 81, nome: 'mateus pereira', idade: 54, altura: 149 },
+  { _id: 82, nome: 'maria pereira', idade: 20, altura: 190 },
+  { _id: 83, nome: 'emerson bezerra', idade: 67, altura: 165 },
+  { _id: 84, nome: 'antonia albuquerque', idade: 95, altura: 152 },
+  { _id: 85, nome: 'eric albuquerque', idade: 93, altura: 194 },  { _id: 86, nome: 'cintia brito', idade: 58, altura: 143 },
+  { _id: 87, nome: 'leticia ribeiro', idade: 25, altura: 142 },
+  { _id: 88, nome: 'francileide ribeiro', idade: 41, altura: 167 },
+  { _id: 89, nome: 'maria de lurdes brito', idade: 61, altura: 190 },
+  {
+    _id: 90,
+    nome: 'maria de lurdes albuquerque',
+    idade: 83,
+    altura: 178
+  },
+  { _id: 91, nome: 'francileide silva', idade: 78, altura: 191 },
+  { _id: 92, nome: 'eric pereira', idade: 41, altura: 173 },
+  { _id: 93, nome: 'pedro silva', idade: 47, altura: 186 },
+  { _id: 94, nome: 'emerson silva', idade: 40, altura: 166 },
+  { _id: 95, nome: 'leticia teixeira', idade: 57, altura: 195 },  { _id: 96, nome: 'antonia brito', idade: 91, altura: 195 },
+  { _id: 97, nome: 'gilvanir pereira', idade: 97, altura: 191 },  { _id: 98, nome: 'joao teixeira', idade: 59, altura: 151 },
+  { _id: 99, nome: 'emerson bezerra', idade: 71, altura: 153 },
+  { _id: 100, nome: 'hellen silva', idade: 39, altura: 141 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 101, nome: 'maiara ribeiro', idade: 81, altura: 164 },
+  { _id: 102, nome: 'angelina teixeira', idade: 75, altura: 145 },
+  { _id: 103, nome: 'emerson teixeira', idade: 88, altura: 186 },
+  { _id: 104, nome: 'maiara bezerra', idade: 81, altura: 178 },
+  { _id: 105, nome: 'maiara souza', idade: 81, altura: 159 },
+  { _id: 106, nome: 'fernanda pereira', idade: 48, altura: 194 },
+  { _id: 107, nome: 'fernanda pereira', idade: 87, altura: 153 },
+  { _id: 108, nome: 'angelina albuquerque', idade: 31, altura: 191 },
+  { _id: 109, nome: 'fernanda albuquerque', idade: 43, altura: 190 },
+  { _id: 110, nome: 'gilvanir albuquerque', idade: 66, altura: 163 },
+  { _id: 111, nome: 'joao souza', idade: 12, altura: 164 },
+  { _id: 112, nome: 'antonio neto bezerra', idade: 87, altura: 198 },
+  { _id: 113, nome: 'antonia ribeiro', idade: 56, altura: 186 },  { _id: 114, nome: 'angelina pereira', idade: 87, altura: 140 },
+  { _id: 115, nome: 'maria de lurdes bezerra', idade: 51, altura: 183 },
+  { _id: 116, nome: 'joao brito', idade: 47, altura: 166 },
+  { _id: 117, nome: 'hellen bezerra', idade: 61, altura: 192 },
+  { _id: 118, nome: 'leticia souza', idade: 59, altura: 144 },
+  { _id: 119, nome: 'pedro albuquerque', idade: 18, altura: 178 },
+  { _id: 120, nome: 'mateus brito', idade: 43, altura: 147 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 121, nome: 'fernanda ribeiro', idade: 81, altura: 166 },
+  { _id: 122, nome: 'pedro pereira', idade: 27, altura: 179 },
+  { _id: 123, nome: 'antonia albuquerque', idade: 61, altura: 172 },
+  { _id: 124, nome: 'maiara souza', idade: 45, altura: 173 },
+  { _id: 125, nome: 'leticia bezerra', idade: 86, altura: 169 },  { _id: 126, nome: 'pedro ribeiro', idade: 90, altura: 153 },
+  { _id: 127, nome: 'pedro bezerra', idade: 43, altura: 169 },
+  { _id: 128, nome: 'francileide teixeira', idade: 92, altura: 142 },
+  { _id: 129, nome: 'francileide teixeira', idade: 68, altura: 179 },
+  { _id: 130, nome: 'angelina ribeiro', idade: 87, altura: 170 },
+  { _id: 131, nome: 'gilvanir brito', idade: 13, altura: 157 },
+  {
+    _id: 132,
+    nome: 'maria de lurdes teixeira',
+    idade: 78,
+    altura: 170
+  },
+  { _id: 133, nome: 'antonia brito', idade: 81, altura: 181 },
+  { _id: 134, nome: 'leticia souza', idade: 61, altura: 152 },
+  { _id: 135, nome: 'antonio neto souza', idade: 18, altura: 170 },
+  { _id: 136, nome: 'eric brito', idade: 44, altura: 182 },
+  { _id: 137, nome: 'antonio neto teixeira', idade: 22, altura: 192 },
+  { _id: 138, nome: 'maria de lurdes pereira', idade: 36, altura: 172 },
+  { _id: 139, nome: 'marcos teixeira', idade: 81, altura: 160 },  { _id: 140, nome: 'emerson silva', idade: 49, altura: 197 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 141, nome: 'hellen bezerra', idade: 16, altura: 161 },
+  { _id: 142, nome: 'marcos ribeiro', idade: 15, altura: 171 },
+  { _id: 143, nome: 'antonio neto brito', idade: 12, altura: 175 },
+  { _id: 144, nome: 'cintia albuquerque', idade: 52, altura: 190 },
+  { _id: 145, nome: 'angelina bezerra', idade: 69, altura: 159 },
+  { _id: 146, nome: 'antonio neto silva', idade: 75, altura: 177 },
+  { _id: 147, nome: 'maiara silva', idade: 81, altura: 149 },
+  { _id: 148, nome: 'leticia teixeira', idade: 79, altura: 187 },
+  { _id: 149, nome: 'gilvanir brito', idade: 91, altura: 185 },
+  { _id: 150, nome: 'francileide bezerra', idade: 53, altura: 156 },
+  { _id: 151, nome: 'pedro brito', idade: 46, altura: 151 },
+  { _id: 152, nome: 'maria souza', idade: 57, altura: 145 },
+  { _id: 153, nome: 'maria ribeiro', idade: 49, altura: 172 },
+  { _id: 154, nome: 'cintia ribeiro', idade: 82, altura: 151 },
+  { _id: 155, nome: 'marcos albuquerque', idade: 26, altura: 193 },
+  { _id: 156, nome: 'angelina brito', idade: 14, altura: 140 },
+  { _id: 157, nome: 'hellen brito', idade: 64, altura: 148 },
+  { _id: 158, nome: 'joao pereira', idade: 21, altura: 168 },
+  { _id: 159, nome: 'eric souza', idade: 57, altura: 142 },
+  { _id: 160, nome: 'mateus teixeira', idade: 96, altura: 194 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 161, nome: 'cintia pereira', idade: 57, altura: 195 },
+  { _id: 162, nome: 'mateus teixeira', idade: 48, altura: 155 },  { _id: 163, nome: 'angelina souza', idade: 31, altura: 150 },
+  { _id: 164, nome: 'maria silva', idade: 80, altura: 180 },
+  { _id: 165, nome: 'eric teixeira', idade: 74, altura: 189 },
+  { _id: 166, nome: 'mateus pereira', idade: 64, altura: 189 },
+  { _id: 167, nome: 'angelina brito', idade: 24, altura: 187 },
+  { _id: 168, nome: 'joao albuquerque', idade: 35, altura: 181 },
+  { _id: 169, nome: 'francileide souza', idade: 76, altura: 188 },
+  { _id: 170, nome: 'joao teixeira', idade: 63, altura: 174 },
+  { _id: 171, nome: 'emerson albuquerque', idade: 73, altura: 169 },
+  { _id: 172, nome: 'eric albuquerque', idade: 53, altura: 182 },
+  { _id: 173, nome: 'cintia pereira', idade: 18, altura: 199 },
+  { _id: 174, nome: 'gilvanir bezerra', idade: 52, altura: 155 },
+  { _id: 175, nome: 'eric brito', idade: 32, altura: 153 },
+  { _id: 176, nome: 'maria ribeiro', idade: 50, altura: 151 },
+  { _id: 177, nome: 'eric albuquerque', idade: 74, altura: 170 },
+  { _id: 178, nome: 'pedro souza', idade: 17, altura: 188 },
+  { _id: 179, nome: 'mateus silva', idade: 58, altura: 194 },
+  { _id: 180, nome: 'mateus pereira', idade: 27, altura: 171 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 181, nome: 'maria ribeiro', idade: 22, altura: 141 },
+  { _id: 182, nome: 'maria de lurdes brito', idade: 27, altura: 172 },
+  { _id: 183, nome: 'antonio neto ribeiro', idade: 19, altura: 161 },
+  { _id: 184, nome: 'angelina souza', idade: 94, altura: 199 },
+  { _id: 185, nome: 'joao brito', idade: 33, altura: 170 },
+  { _id: 186, nome: 'emerson pereira', idade: 27, altura: 198 },  { _id: 187, nome: 'maria silva', idade: 32, altura: 184 },
+  { _id: 188, nome: 'cintia silva', idade: 16, altura: 184 },
+  { _id: 189, nome: 'marcos ribeiro', idade: 47, altura: 183 },
+  { _id: 190, nome: 'marcos brito', idade: 38, altura: 181 },
+  { _id: 191, nome: 'francileide ribeiro', idade: 25, altura: 152 },
+  { _id: 192, nome: 'hellen souza', idade: 80, altura: 185 },
+  { _id: 193, nome: 'antonia bezerra', idade: 72, altura: 144 },  { _id: 194, nome: 'gilvanir teixeira', idade: 98, altura: 190 },
+  { _id: 195, nome: 'mateus ribeiro', idade: 45, altura: 172 },
+  { _id: 196, nome: 'marcos pereira', idade: 40, altura: 187 },
+  { _id: 197, nome: 'eric brito', idade: 60, altura: 195 },
+  { _id: 198, nome: 'antonia ribeiro', idade: 47, altura: 161 },  { _id: 199, nome: 'cintia teixeira', idade: 24, altura: 161 },  { _id: 200, nome: 'pedro silva', idade: 47, altura: 147 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 201, nome: 'mateus souza', idade: 67, altura: 187 },
+  { _id: 202, nome: 'antonio neto silva', idade: 36, altura: 190 },
+  { _id: 203, nome: 'joao bezerra', idade: 76, altura: 171 },
+  { _id: 204, nome: 'marcos souza', idade: 86, altura: 142 },
+  { _id: 205, nome: 'hellen bezerra', idade: 27, altura: 149 },
+  { _id: 206, nome: 'francileide pereira', idade: 67, altura: 163 },
+  { _id: 207, nome: 'pedro albuquerque', idade: 51, altura: 181 },
+  { _id: 208, nome: 'cintia albuquerque', idade: 43, altura: 147 },
+  { _id: 209, nome: 'fernanda ribeiro', idade: 94, altura: 152 },
+  { _id: 210, nome: 'mateus teixeira', idade: 80, altura: 191 },  { _id: 211, nome: 'leticia albuquerque', idade: 46, altura: 166 },
+  { _id: 212, nome: 'maria de lurdes silva', idade: 19, altura: 188 },
+  { _id: 213, nome: 'gilvanir ribeiro', idade: 73, altura: 161 },
+  { _id: 214, nome: 'maiara silva', idade: 73, altura: 174 },
+  { _id: 215, nome: 'maiara teixeira', idade: 44, altura: 185 },  { _id: 216, nome: 'hellen brito', idade: 16, altura: 144 },
+  { _id: 217, nome: 'emerson ribeiro', idade: 57, altura: 141 },  { _id: 218, nome: 'francileide ribeiro', idade: 40, altura: 150 },
+  { _id: 219, nome: 'fernanda bezerra', idade: 85, altura: 152 },
+  { _id: 220, nome: 'hellen brito', idade: 21, altura: 142 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 221, nome: 'angelina albuquerque', idade: 77, altura: 179 },
+  { _id: 222, nome: 'marcos teixeira', idade: 42, altura: 153 },  { _id: 223, nome: 'marcos albuquerque', idade: 62, altura: 158 },
+  { _id: 224, nome: 'fernanda silva', idade: 27, altura: 170 },
+  { _id: 225, nome: 'marcos brito', idade: 53, altura: 178 },
+  { _id: 226, nome: 'emerson teixeira', idade: 79, altura: 194 },
+  { _id: 227, nome: 'marcos albuquerque', idade: 81, altura: 172 },
+  { _id: 228, nome: 'fernanda silva', idade: 23, altura: 189 },
+  { _id: 229, nome: 'emerson teixeira', idade: 18, altura: 168 },
+  {
+    _id: 230,
+    nome: 'antonio neto albuquerque',
+    idade: 95,
+    altura: 149
+  },
+  { _id: 231, nome: 'emerson teixeira', idade: 16, altura: 163 },
+  { _id: 232, nome: 'gilvanir teixeira', idade: 83, altura: 141 },
+  { _id: 233, nome: 'maiara teixeira', idade: 14, altura: 191 },  { _id: 234, nome: 'cintia pereira', idade: 50, altura: 167 },
+  { _id: 235, nome: 'mateus teixeira', idade: 90, altura: 140 },  { _id: 236, nome: 'maria teixeira', idade: 18, altura: 197 },
+  { _id: 237, nome: 'antonia brito', idade: 39, altura: 179 },
+  { _id: 238, nome: 'fernanda souza', idade: 22, altura: 150 },
+  { _id: 239, nome: 'angelina pereira', idade: 32, altura: 170 },
+  { _id: 240, nome: 'pedro albuquerque', idade: 49, altura: 184 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 241, nome: 'emerson ribeiro', idade: 32, altura: 183 },  { _id: 242, nome: 'angelina souza', idade: 77, altura: 155 },
+  { _id: 243, nome: 'antonia ribeiro', idade: 43, altura: 188 },  { _id: 244, nome: 'antonio neto teixeira', idade: 90, altura: 196 },
+  { _id: 245, nome: 'joao pereira', idade: 79, altura: 154 },
+  { _id: 246, nome: 'eric bezerra', idade: 16, altura: 144 },
+  { _id: 247, nome: 'pedro pereira', idade: 95, altura: 161 },
+  { _id: 248, nome: 'pedro bezerra', idade: 76, altura: 157 },
+  { _id: 249, nome: 'antonia bezerra', idade: 88, altura: 140 },  { _id: 250, nome: 'antonia teixeira', idade: 69, altura: 173 },
+  { _id: 251, nome: 'angelina ribeiro', idade: 46, altura: 163 },
+  { _id: 252, nome: 'marcos pereira', idade: 49, altura: 174 },
+  { _id: 253, nome: 'pedro bezerra', idade: 51, altura: 165 },
+  { _id: 254, nome: 'emerson brito', idade: 19, altura: 170 },
+  { _id: 255, nome: 'maria brito', idade: 25, altura: 188 },
+  { _id: 256, nome: 'leticia teixeira', idade: 23, altura: 181 },
+  { _id: 257, nome: 'maria de lurdes bezerra', idade: 94, altura: 140 },
+  { _id: 258, nome: 'leticia ribeiro', idade: 79, altura: 159 },  { _id: 259, nome: 'maiara albuquerque', idade: 12, altura: 192 },
+  { _id: 260, nome: 'pedro pereira', idade: 15, altura: 195 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 261, nome: 'joao brito', idade: 17, altura: 193 },
+  { _id: 262, nome: 'joao brito', idade: 16, altura: 190 },
+  { _id: 263, nome: 'marcos brito', idade: 65, altura: 168 },
+  { _id: 264, nome: 'leticia teixeira', idade: 66, altura: 147 },
+  { _id: 265, nome: 'marcos albuquerque', idade: 99, altura: 147 },
+  { _id: 266, nome: 'fernanda ribeiro', idade: 14, altura: 143 },
+  { _id: 267, nome: 'cintia albuquerque', idade: 62, altura: 184 },
+  { _id: 268, nome: 'angelina albuquerque', idade: 20, altura: 166 },
+  { _id: 269, nome: 'antonio neto bezerra', idade: 76, altura: 182 },
+  { _id: 270, nome: 'maria bezerra', idade: 83, altura: 152 },
+  { _id: 271, nome: 'francileide pereira', idade: 65, altura: 145 },
+  { _id: 272, nome: 'gilvanir ribeiro', idade: 86, altura: 181 },
+  { _id: 273, nome: 'fernanda ribeiro', idade: 61, altura: 185 },
+  { _id: 274, nome: 'cintia pereira', idade: 16, altura: 159 },
+  { _id: 275, nome: 'gilvanir pereira', idade: 93, altura: 185 },
+  { _id: 276, nome: 'cintia teixeira', idade: 22, altura: 175 },  { _id: 277, nome: 'fernanda brito', idade: 30, altura: 141 },
+  { _id: 278, nome: 'pedro ribeiro', idade: 91, altura: 146 },
+  { _id: 279, nome: 'antonio neto brito', idade: 67, altura: 163 },
+  { _id: 280, nome: 'pedro albuquerque', idade: 12, altura: 195 }
+]
+Type "it" for more
+dadosPessoais> it
+[
+  { _id: 281, nome: 'marcos brito', idade: 12, altura: 180 },
+  { _id: 282, nome: 'gilvanir bezerra', idade: 37, altura: 158 },
+  { _id: 283, nome: 'maiara brito', idade: 74, altura: 146 },
+  { _id: 284, nome: 'emerson bezerra', idade: 60, altura: 198 },  { _id: 285, nome: 'pedro silva', idade: 93, altura: 189 },
+  { _id: 286, nome: 'joao brito', idade: 18, altura: 170 },
+  { _id: 287, nome: 'joao albuquerque', idade: 63, altura: 178 },
+  {
+    _id: 288,
+    nome: 'maria de lurdes teixeira',
+    idade: 74,
+    altura: 147
+  },
+  { _id: 289, nome: 'emerson bezerra', idade: 95, altura: 193 },  { _id: 290, nome: 'leticia ribeiro', idade: 60, altura: 190 },  { _id: 291, nome: 'leticia souza', idade: 89, altura: 186 },
+  { _id: 292, nome: 'maria de lurdes silva', idade: 16, altura: 168 },
+  { _id: 293, nome: 'maria de lurdes souza', idade: 86, altura: 179 },
+  { _id: 294, nome: 'marcos ribeiro', idade: 41, altura: 149 },
+  { _id: 295, nome: 'emerson silva', idade: 67, altura: 173 },
+  { _id: 296, nome: 'emerson pereira', idade: 65, altura: 178 },  { _id: 297, nome: 'marcos albuquerque', idade: 44, altura: 142 },
+  { _id: 298, nome: 'maiara albuquerque', idade: 35, altura: 166 },
+  { _id: 299, nome: 'leticia albuquerque', idade: 18, altura: 141 },
+  { _id: 300, nome: 'hellen brito', idade: 96, altura: 148 }
+]
+Type "it" for more
+dadosPessoais> it
+no cursor
+dadosPessoais> db.pessoas.createIndex({nome:1})
+nome_1
+dadosPessoais> db.pessoas.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { nome: 1 }, name: 'nome_1' }
+]
+dadosPessoais>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+dadosPessoais>
+
+C:\Users\55899> use banco
+'use' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\Users\55899>use bancoValidando
+'use' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\Users\55899>use dadosPessoais
+'use' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\Users\55899>mongosh
+Current Mongosh Log ID: 654ced491364896208d92a5d
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.2
+Using MongoDB:          7.0.2
+Using Mongosh:          2.0.2
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-11-08T12:00:42.868-03:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use banco
+switched to db banco
+banco> load("C:/Users/55899/Documents/BANCO DE DADOS II/atvMongoDB_carros/validando.js")
+true
+banco> db.getCollectionInfos().forEach(function(colletion){
+... if(collection.name === "clientes"){
+... printjson(colletion);
+... }
+... });
+ReferenceError: collection is not defined
+banco> db.collections.find()
+
+banco> db.getCollectionInfos().forEach(function (colletion) { if (collection.name === "clientes") { printjson(colletion); } });
+ReferenceError: collection is not defined
+banco> load("C:/Users/55899/Documents/BANCO DE DADOS II/atvMongoDB_carros/validando.js")
+true
+banco> use clientes
+switched to db clientes
+clientes> db.getCollectionInfos().forEach(function (colletion) { if (collection.name === "clientes") { printjson(colletion); } });
+ReferenceError: collection is not defined
+clientes> db.clientes.insertOne({nome:"Stephany"},{cpf:"1545235498"})
+Uncaught:
+MongoServerError: Document failed validation
+Additional information: {
+  failingDocumentId: ObjectId("654cef601364896208d92a5e"),
+  details: {
+    operatorName: '$jsonSchema',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'required',
+        specifiedAs: { required: [ 'nome', 'cpf' ] },
+        missingProperties: [ 'cpf' ]
+      }
+    ]
+  }
+}
+clientes> db.clientes.insertOne({nome:"Stephany"},{cpf:1545235498})
+Uncaught:
+MongoServerError: Document failed validation
+Additional information: {
+  failingDocumentId: ObjectId("654cef831364896208d92a5f"),
+  details: {
+    operatorName: '$jsonSchema',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'required',
+        specifiedAs: { required: [ 'nome', 'cpf' ] },
+        missingProperties: [ 'cpf' ]
+      }
+    ]
+  }
+}
+clientes> db.clientes.insertOne({nome:"Stephany"},{cpf:"1545235498"})
+Uncaught:
+MongoServerError: Document failed validation
+Additional information: {
+  failingDocumentId: ObjectId("654cefdb1364896208d92a60"),
+  details: {
+    operatorName: '$jsonSchema',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'required',
+        specifiedAs: { required: [ 'nome', 'cpf' ] },
+        missingProperties: [ 'cpf' ]
+      }
+    ]
+  }
+}
+clientes> db.clientes.insertOne({nome:"Stephany", cpf:"1545235498"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("654cf0071364896208d92a61")
+}
+clientes> db.clientes.find()
+[
+  {
+    _id: ObjectId("654cf0071364896208d92a61"),
+    nome: 'Stephany',
+    cpf: '1545235498'
+  }
+]
+clientes> db.clientes.insertOne({nome:"mateus"})
+Uncaught:
+MongoServerError: Document failed validation
+Additional information: {
+  failingDocumentId: ObjectId("654cf03d1364896208d92a62"),
+  details: {
+    operatorName: '$jsonSchema',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'required',
+        specifiedAs: { required: [ 'nome', 'cpf' ] },
+        missingProperties: [ 'cpf' ]
+      }
+    ]
+  }
+}
+clientes> load("C:/Users/55899/Documents/BANCO DE DADOS II/atvMongoDB_carros/validando.js")
+MongoServerError: no such command: 'clientes'
+clientes> db.clientes.find()
+[
+  {
+    _id: ObjectId("654cf0071364896208d92a61"),
+    nome: 'Stephany',
+    cpf: '1545235498'
+  }
+]
+clientes> load("C:/Users/55899/Documents/BANCO DE DADOS II/atvMongoDB_carros/validando.js")
+MongoServerError: no such command: 'clientes'
+clientes> db.clientes.insertOne({nome:"mateus", cpf:"9896532",status_civil:"solteiro"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("654cf26d1364896208d92a63")
+}
+clientes> db.clientes.find()
+[
+  {
+    _id: ObjectId("654cf0071364896208d92a61"),
+    nome: 'Stephany',
+    cpf: '1545235498'
+  },
+  {
+    _id: ObjectId("654cf26d1364896208d92a63"),
+    nome: 'mateus',
+    cpf: '9896532',
+    status_civil: 'solteiro'
+  }
+]
+clientes> db.clientes.insertOne({nome:"diego", cpf:"753561",status_civil:"casado",endereco:"R. Francisco Urquiza"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("654cf3011364896208d92a64")
+}
+clientes> db.clientes.find()
+[
+  {
+    _id: ObjectId("654cf0071364896208d92a61"),
+    nome: 'Stephany',
+    cpf: '1545235498'
+  },
+  {
+    _id: ObjectId("654cf26d1364896208d92a63"),
+    nome: 'mateus',
+    cpf: '9896532',
+    status_civil: 'solteiro'
+  },
+  {
+    _id: ObjectId("654cf3011364896208d92a64"),
+    nome: 'diego',
+    cpf: '753561',
+    status_civil: 'casado',
+    endereco: 'R. Francisco Urquiza'
+  }
+]
+clientes> db.getCollectionInfos().forEach(function (colletion) { if (collection.name === "clientes") { printjson(colletion); } });
+ReferenceError: collection is not defined
+clientes> db.getCollectionInfos().forEach(function(collection) { if (collection.name === "clientes") {printjson(collection); }});
+{
+  name: 'clientes',
+  type: 'collection',
+  options: {
+    validator: {
+      '$jsonSchema': {
+        bsonType: 'object',
+        required: [
+          'nome',
+          'cpf'
+        ],
+        properties: {
+          nome: {
+            bsonType: 'string',
+            description: 'informe corretamente o nome do cliente'
+          },
+          cpf: {
+            bsonType: 'string',
+            description: 'informe corretamente o cpf do cliente'
+          }
+        }
+      }
+    }
+  },
+  info: {
+    readOnly: false,
+    uuid: new UUID("5919bc62-29db-4fed-acb0-501cd465a41a")
+  },
+  idIndex: {
+    v: 2,
+    key: {
+      _id: 1
+    },
+    name: '_id_'
+  }
+}
+
+clientes> db.clientes.insertOne({nome:"felca", cpf:"753561",status_civil:"casado",endereco:"R. Francisco Urquiza"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("654cf4431364896208d92a65")
+}
+clientes> load("C:/Users/55899/Documents/BANCO DE DADOS II/atvMongoDB_carros/validando.js")
+MongoServerError: no such command: 'clientes'
+clientes> load("C:/Users/55899/Documents/BANCO DE DADOS II/atvMongoDB_carros/validando.js")
+true
+clientes> db.clientes.insertOne({nome:"felca", cpf:"753561",status_civil:"casado",endereco:"R. Francisco Urquiza"})
+Uncaught:
+MongoServerError: Document failed validation
+Additional information: {
+  failingDocumentId: ObjectId("654cf5021364896208d92a66"),
+  details: {
+    operatorName: '$jsonSchema',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'properties',
+        propertiesNotSatisfied: [
+          {
+            propertyName: 'status_civil',
+            description: 'informe corretamente o status civil do cliente',
+            details: [
+              {
+                operatorName: 'enum',
+                specifiedAs: {
+                  enum: [
+                    'Solteiro(a)',
+                    'Casado(a)',
+                    'Separado(a)',
+                    'Divorciado(a)',
+                    'Viúvo(a)'
+                  ]
+                },
+                reason: 'value was not found in enum',
+                consideredValue: 'casado'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+clientes>
